@@ -25,7 +25,6 @@ function CustomHeader() {
                 </div>
 
                 <div className='absolute bottom-5 right-0 ml-auto'>
-                    {/* <img src={personIcon} alt="" style={{width:'100px'}} /> */}
                     <img src={personIcon} alt="" className='w-[6rem] md:w-[8rem]' />
                 </div>
 
