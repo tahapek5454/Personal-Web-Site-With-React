@@ -1,9 +1,10 @@
-import './App.css';
+import CustomNavbar from "./components/customNavbar/CustomNavbar";
 
 function App() {
   return (
     <div>
-      <h1 className='text-3xl font-bold underline'>hello world</h1>
+      <CustomNavbar/>
+      <h1 className='text-3xl font-bold underline font-gemunu text-gega-red'>hello world</h1>
     </div>
   );
 }
