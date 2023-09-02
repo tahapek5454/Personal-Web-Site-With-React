@@ -8,12 +8,12 @@ function CustomAbout() {
         <>
             <section className='py-16 md:py-24 px-4 bg-black'>
 
-                <div className='container flex flex-col-reverse md:flex-row space-x-8  '>
+                <div className='container flex flex-col-reverse md:flex-row md:space-x-8  '>
                     <div className='basis-1/3 px-4 md:px-0 '>
                         <img src={personAbout} alt="" className='rounded-xl hover:scale-110  hover:opacity-50 duration-500' />
                     </div>
 
-                    <div className='basis-2/3 '>
+                    <div className='basis-2/3 px-2 md:px-0'>
 
                         <div className='flex flex-col items-center justify-center'>
                             <h2 className='text-xl md:text-5xl text-gega-red tracking-wider'>HAKKIMDA</h2>
