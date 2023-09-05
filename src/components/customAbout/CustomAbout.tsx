@@ -6,7 +6,7 @@ import './CustomAbout.css'
 function CustomAbout() {
     return (
         <>
-            <section className='py-16 md:py-24 px-4 bg-black'>
+            <section className='py-16 md:py-24 px-4 bg-black' id='custom-about'>
 
                 <div className='container flex flex-col-reverse md:flex-row md:space-x-8  '>
                     <div className='basis-1/3 px-4 md:px-0 '>
