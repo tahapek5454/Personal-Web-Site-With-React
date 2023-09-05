@@ -5,7 +5,7 @@ import './CustomNavbar.css'
 function CustomNavbar() {
 
     const [isExpand, setExpand] = useState<boolean>(false);
-
+    const [navItemIndex, setNavItemIndex] = useState<number>(0);
 
 
     const scrollToElement = (id:string) => {
@@ -18,7 +18,7 @@ function CustomNavbar() {
             <header className='bg-black py-4 text-gega-grey font-gemunu'>
                 <div className='container md:flex md:items-center justify-between space-x-8 lg:space-x-16'>
 
-                    <span onClick={()=>scrollToElement("project-body")} className='pl-7 md:pl-0 text-3xl lg:text-5xl font-bold text-transparent bg-gradient-to-r bg-clip-text from-gega-red to-gega-grey whitespace-nowrap hover:cursor-pointer'>TAHA PEK</span>
+                    <span onClick={()=>{scrollToElement("project-body"); setNavItemIndex(0);}} className='pl-7 md:pl-0 text-3xl lg:text-5xl font-bold text-transparent bg-gradient-to-r bg-clip-text from-gega-red to-gega-grey whitespace-nowrap hover:cursor-pointer'>TAHA PEK</span>
 
                     <div className='flex absolute right-1 items-center top-6 pr-7 md:hidden' onClick={()=>setExpand(!isExpand)}>
                         <div className='space-y-1 cursor-pointer'>
@@ -38,10 +38,10 @@ function CustomNavbar() {
                         <div className={`${isExpand ?  'bg-gega-grey w-11/12 h-1 rounded-full mt-3 mb-3' : 'hidden'} md:hidden`}></div>
                       
                         <ul className='space-y-6 md:space-y-0 md:flex items-center md:space-x-6  lg:space-x-8 lg:text-lg '>                                           
-                            <li> <span  onClick={()=>scrollToElement("custom-about")} className='hover:text-gega-melon transition duration-500 active hover:cursor-pointer'>HAKKIMDA</span></li>
-                            <li> <span  onClick={()=>scrollToElement("custom-ex")} className='hover:text-gega-melon transition duration-500 hover:cursor-pointer'>TECRÜBELERİM</span></li>
-                            <li> <span  onClick={()=>scrollToElement("custom-project")} className='hover:text-gega-melon transition duration-500 hover:cursor-pointer'>Projeler</span></li>
-                            <li> <span  onClick={()=>scrollToElement("custom-footer")} className='hover:text-gega-melon transition duration-500 hover:cursor-pointer'>İLETİŞİM</span></li>
+                            <li> <span  onClick={()=>{scrollToElement("custom-about"); setNavItemIndex(1);}} className={`${navItemIndex === 1 ? 'active ' : ''} hover:text-gega-melon transition duration-500 hover:cursor-pointer`}>HAKKIMDA</span></li>
+                            <li> <span  onClick={()=>{scrollToElement("custom-ex"); setNavItemIndex(2);}} className={`${navItemIndex === 2 ? 'active ' : ''} hover:text-gega-melon transition duration-500 hover:cursor-pointer`}>TECRÜBELERİM</span></li>
+                            <li> <span  onClick={()=>{scrollToElement("custom-project"); setNavItemIndex(3);}} className={`${navItemIndex === 3 ? 'active ' : ''} hover:text-gega-melon transition duration-500 hover:cursor-pointer`}>Projeler</span></li>
+                            <li> <span  onClick={()=>{scrollToElement("custom-footer"); setNavItemIndex(4)}} className={`${navItemIndex === 4 ? 'active ' : ''} hover:text-gega-melon transition duration-500 hover:cursor-pointer`}>İLETİŞİM</span></li>
                        
                         </ul>
 
