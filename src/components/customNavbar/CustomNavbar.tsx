@@ -40,7 +40,7 @@ function CustomNavbar() {
                         <ul className='space-y-6 md:space-y-0 md:flex items-center md:space-x-6  lg:space-x-8 lg:text-lg '>                                           
                             <li> <span  onClick={()=>{scrollToElement("custom-about"); setNavItemIndex(1);}} className={`${navItemIndex === 1 ? 'active ' : ''} hover:text-gega-melon transition duration-500 hover:cursor-pointer`}>HAKKIMDA</span></li>
                             <li> <span  onClick={()=>{scrollToElement("custom-ex"); setNavItemIndex(2);}} className={`${navItemIndex === 2 ? 'active ' : ''} hover:text-gega-melon transition duration-500 hover:cursor-pointer`}>TECRÜBELERİM</span></li>
-                            <li> <span  onClick={()=>{scrollToElement("custom-project"); setNavItemIndex(3);}} className={`${navItemIndex === 3 ? 'active ' : ''} hover:text-gega-melon transition duration-500 hover:cursor-pointer`}>Projeler</span></li>
+                            <li> <span  onClick={()=>{scrollToElement("custom-project"); setNavItemIndex(3);}} className={`${navItemIndex === 3 ? 'active ' : ''} hover:text-gega-melon transition duration-500 hover:cursor-pointer`}>PROJELER</span></li>
                             <li> <span  onClick={()=>{scrollToElement("custom-footer"); setNavItemIndex(4)}} className={`${navItemIndex === 4 ? 'active ' : ''} hover:text-gega-melon transition duration-500 hover:cursor-pointer`}>İLETİŞİM</span></li>
                        
                         </ul>
