@@ -6,12 +6,19 @@ function CustomNavbar() {
 
     const [isExpand, setExpand] = useState<boolean>(false);
 
+
+
+    const scrollToElement = (id:string) => {
+        const container = document.getElementById(id);
+        container?.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
         <>
             <header className='bg-black py-4 text-gega-grey font-gemunu'>
                 <div className='container md:flex md:items-center justify-between space-x-8 lg:space-x-16'>
 
-                    <a href='#project-body' className='pl-7 md:pl-0 text-3xl lg:text-5xl font-bold text-transparent bg-gradient-to-r bg-clip-text from-gega-red to-gega-grey whitespace-nowrap'>TAHA PEK</a>
+                    <span onClick={()=>scrollToElement("project-body")} className='pl-7 md:pl-0 text-3xl lg:text-5xl font-bold text-transparent bg-gradient-to-r bg-clip-text from-gega-red to-gega-grey whitespace-nowrap hover:cursor-pointer'>TAHA PEK</span>
 
                     <div className='flex absolute right-1 items-center top-6 pr-7 md:hidden' onClick={()=>setExpand(!isExpand)}>
                         <div className='space-y-1 cursor-pointer'>
@@ -31,10 +38,10 @@ function CustomNavbar() {
                         <div className={`${isExpand ?  'bg-gega-grey w-11/12 h-1 rounded-full mt-3 mb-3' : 'hidden'} md:hidden`}></div>
                       
                         <ul className='space-y-6 md:space-y-0 md:flex items-center md:space-x-6  lg:space-x-8 lg:text-lg '>                                           
-                            <li> <a href='#custom-about' className='hover:text-gega-melon transition duration-500 active'>HAKKIMDA</a></li>
-                            <li> <a href='#custom-ex' className='hover:text-gega-melon transition duration-500'>TECRÜBELERİM</a></li>
-                            <li> <a href='#custom-project' className='hover:text-gega-melon transition duration-500'>Projeler</a></li>
-                            <li> <a href='#custom-footer' className='hover:text-gega-melon transition duration-500'>İLETİŞİM</a></li>
+                            <li> <span  onClick={()=>scrollToElement("custom-about")} className='hover:text-gega-melon transition duration-500 active hover:cursor-pointer'>HAKKIMDA</span></li>
+                            <li> <span  onClick={()=>scrollToElement("custom-ex")} className='hover:text-gega-melon transition duration-500 hover:cursor-pointer'>TECRÜBELERİM</span></li>
+                            <li> <span  onClick={()=>scrollToElement("custom-project")} className='hover:text-gega-melon transition duration-500 hover:cursor-pointer'>Projeler</span></li>
+                            <li> <span  onClick={()=>scrollToElement("custom-footer")} className='hover:text-gega-melon transition duration-500 hover:cursor-pointer'>İLETİŞİM</span></li>
                        
                         </ul>
 
