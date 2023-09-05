@@ -11,7 +11,7 @@ function CustomHeader() {
 
                 <div className='absolute bottom-0 w-full bg-gradient-to-b from-transparent to-black'>
 
-                    <div className='container'>
+                    <div className='container pl-4 md:pl-0'>
                         <h2 className='md:text-2xl text-gega-melon tracking-wider group-hover:mb-3 duration-500'> KİŞİSEL WEB SİTEME HOŞGELDİNİZ</h2>
                         <h1 className='text-2xl md:text-6xl text-gega-red tracking-wider group-hover:mb-3 duration-500'> FULL-STACK DEVELOPER</h1>
                         <p className='text-sm md:text-lg text-gega-grey font-open group-hover:mb-3 duration-500 w-2/4'>Merhabalar, ben Taha Pek.</p>

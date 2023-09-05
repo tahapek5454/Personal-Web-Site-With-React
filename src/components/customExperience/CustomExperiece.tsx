@@ -89,9 +89,9 @@ function CustomExperiece() {
 
                             </div>
 
-                            <button className='mt-3 md:mt-0 text-xl md:text-3xl bg-gega-red px-3 py-1 hover:bg-rose-600 transation duration-500 rounded-xl md:min-w-[410px] md:h-24'>
-                                <a href='https://drive.google.com/file/d/1XsLJrYgkEJFZwcbXQA3dGIHbc-o-rNHS/view?usp=share_link' target='_blank' rel="noreferrer" className="font-gemunu text-gega-grey">CV</a> <i className="fa-solid fa-download text-gega-grey"></i>
-                            </button>
+                            <a href='https://drive.google.com/file/d/1XsLJrYgkEJFZwcbXQA3dGIHbc-o-rNHS/view?usp=share_link' target='_blank' rel="noreferrer" className='flex justify-center items-center font-gemunu text-gega-grey mt-3 md:mt-0 text-xl md:text-3xl bg-gega-red px-3 py-1 hover:bg-rose-600 transation duration-500 rounded-xl md:min-w-[410px] md:h-24'>
+                                <span>CV</span><i className="fa-solid fa-download text-gega-grey"></i>
+                            </a>
 
                         </div>
 
