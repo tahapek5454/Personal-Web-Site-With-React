@@ -20,7 +20,10 @@ module.exports = {
         'gega-melon': '#FFD369',
         'gega-grey': '#DDDDDD',
         'gega-white': '#F7F7F7',
-        'pek-grey':'#3d3d3d'
+        'pek-grey':'#3d3d3d',
+        'pek-bg':'rgba(0, 0, 0, 0.80)',
+        'pek-yellow':'#FFB800',
+        'pek-red':'#D91313'
       },
       spacing:{
         '128':'32rem'
