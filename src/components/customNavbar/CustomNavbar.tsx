@@ -26,7 +26,7 @@ function CustomNavbar() {
           index: idFilter(section.id),
           key: section.id,
           start: rect.top + window.scrollY,
-          end: rect.bottom + window.scrollY
+          end: rect.bottom + window.scrollY,
         });
       });
 
@@ -51,7 +51,7 @@ function CustomNavbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [navItemIndex]);
+  }, []);
 
   const idFilter = (id: string) => {
     if (id === "custom-about") return 1;
