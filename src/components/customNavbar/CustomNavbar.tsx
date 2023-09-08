@@ -1,10 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./CustomNavbar.css";
+
+interface ICustomSection {
+  key: string;
+  start: number;
+  end: number;
+  index: number;
+}
 
 function CustomNavbar() {
   const [isExpand, setExpand] = useState<boolean>(false);
   const [navItemIndex, setNavItemIndex] = useState<number>(0);
+
+  useEffect(() => {
+    const getSections = () => {
+      const sections: Partial<ICustomSection>[] = [];
+
+      const sectionElements = document.querySelectorAll("section");
+      const sectionsArray = Array.from(sectionElements);
+
+      sectionsArray.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        sections.push({
+          index: idFilter(section.id),
+          key: section.id,
+          start: rect.top + window.scrollY,
+          end: rect.bottom + window.scrollY
+        });
+      });
+
+      return sections;
+    };
+
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const customSections = getSections();
+
+      customSections.forEach((section) => {
+        if (
+          currentScrollPos >= (section.start as number) &&
+          currentScrollPos < (section.end as number)
+        )
+          setNavItemIndex(section.index as number);
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [navItemIndex]);
+
+  const idFilter = (id: string) => {
+    if (id === "custom-about") return 1;
+    if (id === "custom-ex") return 2;
+    if (id === "custom-project") return 3;
+    if (id === "custom-footer") return 4;
+  };
 
   const scrollToElement = (id: string) => {
     const container = document.getElementById(id);
