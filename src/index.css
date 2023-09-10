@@ -7,3 +7,21 @@
         @apply font-gemunu
     }
 }
+
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgb(0, 0, 0); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #3d3d3d; 
+    border-radius: 10px;
+  }
+  
