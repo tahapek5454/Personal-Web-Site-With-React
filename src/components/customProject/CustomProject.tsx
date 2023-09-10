@@ -26,7 +26,7 @@ function CustomProject() {
                             <div className='border-t-2 border-solid border-gega-grey p-4 flex justify-end items-center space-x-8'>
 
                                 <a href='https://github.com/Abvag-Bitirme-OCR/DODKA-Backend/archive/refs/heads/main.zip' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
-                                    <p className='text-black font-gemunu text-lg'>Repoyu İndir </p>
+                                    <p className='text-black font-gemunu text-lg'>İndir </p>
                                     <i className="fa-brands fa-github text-black text-2xl "></i>
                                 </a>
 
@@ -53,7 +53,7 @@ function CustomProject() {
                             <div className='border-t-2 border-solid border-gega-grey p-4 flex justify-end items-center space-x-8'>
 
                                 <a href='https://github.com/tahapek5454/ASP.NETCore-6-ECommerceAPI/archive/refs/heads/main.zip' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
-                                    <p className='text-black font-gemunu text-lg '>Repoyu İndir </p>
+                                    <p className='text-black font-gemunu text-lg '>İndir </p>
                                     <i className="fa-brands fa-github text-black text-2xl "></i>
                                 </a>
 
@@ -80,7 +80,7 @@ function CustomProject() {
                             <div className='border-t-2 border-solid border-gega-grey p-4 flex justify-end items-center space-x-8'>
 
                                 <a href='https://github.com/KouSelfWaiter/Foods-Backend/archive/refs/heads/main.zip' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
-                                    <p className='text-black font-gemunu text-lg'>Repoyu İndir </p>
+                                    <p className='text-black font-gemunu text-lg'>İndir </p>
                                     <i className="fa-brands fa-github text-black text-2xl "></i>
                                 </a>
 
@@ -107,7 +107,7 @@ function CustomProject() {
                             <div className='border-t-2 border-solid border-gega-grey p-4 flex justify-end items-center space-x-8'>
 
                                 <a href='https://github.com/tahapek5454/JWT-With-NETCore/archive/refs/heads/main.zip' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
-                                    <p className='text-black font-gemunu text-lg '>Repoyu İndir </p>
+                                    <p className='text-black font-gemunu text-lg '>İndir </p>
                                     <i className="fa-brands fa-github text-black text-2xl "></i>
                                 </a>
 
@@ -134,7 +134,7 @@ function CustomProject() {
                             <div className='border-t-2 border-solid border-gega-grey p-4 flex justify-end items-center space-x-8'>
 
                                 <a href='https://github.com/tahapek5454/RabbitMQ-With-NETCore/archive/refs/heads/main.zip' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
-                                    <p className='text-black font-gemunu text-lg '>Repoyu İndir </p>
+                                    <p className='text-black font-gemunu text-lg '>İndir </p>
                                     <i className="fa-brands fa-github text-black text-2xl "></i>
                                 </a>
 
