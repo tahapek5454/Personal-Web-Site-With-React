@@ -7,12 +7,12 @@ function CustomAbout() {
   return (
     <>
       <section className="py-16 md:py-24 px-4 bg-black" id="custom-about">
-        <div className="container flex flex-col-reverse md:flex-row md:space-x-8  ">
-          <div className="basis-1/3 px-4 md:px-0 ">
+        <div className="container flex flex-col-reverse lg:flex-row  md:space-x-8  ">
+          <div className="basis-1/3 px-4 md:px-0">
             <img
               src={personAbout}
               alt=""
-              className="rounded-xl hover:scale-110  hover:opacity-50 duration-500"
+              className="rounded-xl hover:scale-110 hover:opacity-50 duration-500"
             />
           </div>
 
@@ -20,8 +20,7 @@ function CustomAbout() {
             <div className="flex flex-col items-center justify-center">
               <h2 className="text-xl md:text-5xl text-gega-red tracking-wider">
                 HAKKIMDA
-              </h2>
-              <div className="bg-gega-grey w-full md:w-2/3 h-1 rounded-full mt-4"></div>
+              </h2>          
             </div>
 
             <div className="flex flex-col items-center justify-center mt-2 group">

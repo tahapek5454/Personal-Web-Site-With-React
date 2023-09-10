@@ -45,7 +45,7 @@ function CustomFooter() {
           </div>
 
           <div>
-            <h2 className="text-gega-red"> İLETİŞİM</h2>
+            <h2 className="text-gega-red hidden md:flex"> İLETİŞİM</h2>
             <span className="text-xl">tahapek5454@gmail.com</span>
           </div>
         </div>

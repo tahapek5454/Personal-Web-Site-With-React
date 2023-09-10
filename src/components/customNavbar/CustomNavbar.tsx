@@ -75,7 +75,7 @@ function CustomNavbar() {
                 scrollToElement("project-body");
                 setNavItemIndex(0);
               }}
-              className="pl-7 md:pl-0 text-3xl lg:text-5xl font-bold text-transparent bg-gradient-to-r bg-clip-text from-gega-red to-gega-grey whitespace-nowrap hover:cursor-pointer"
+              className="pl-7 md:pl-0 text-3xl lg:text-4xl font-bold text-transparent bg-gradient-to-r bg-clip-text from-gega-red to-gega-grey whitespace-nowrap hover:cursor-pointer"
             >
               TAHA PEK
             </span>
