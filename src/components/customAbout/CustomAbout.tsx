@@ -33,18 +33,25 @@ function CustomAbout() {
                   09.08.2002 Sakarya' da doğdum.
                 </li>
                 <li className="mt-4 group-hover:mt-6 duration-500 ">
-                  Necmettin Erbakan Fen Lisesi mezunuyum.
+                  Kocaeli Üniversitesi Bilgisayar Mühendisliği mezunuyum.
                 </li>
                 <li className="mt-4 group-hover:mt-6 duration-500 ">
-                  Kocaeli Üniversitesi Bilgisayar Mühendisliği 4. sınıf
-                  öğrencisiyim.
+                  Aktif olarak Doğuş Teknoloji şirketinde Software Developer olarak görev almaktayım.
                 </li>
-                <li className="mt-4 group-hover:mt-6 duration-500 ">
-                  Doğuş Teknoloji'de Full-Stack-Developer Intern olarak görev
-                  almaktayım.
+                <li className="mt-4 group-hover:mt-6 duration-500 max-w-[70ch] ">
+                  Dinamik ve sonuç odaklı bir yazılım geliştirici olarak, hem backend hem de frontend alanlarında deneyime sahibim.
                 </li>
-                <li className="mt-4 group-hover:mt-6 duration-500 ">
-                  Gelecekte iyi bir Full-Stack-Developer olmayı hedefliyorum.
+                <li className="mt-4 group-hover:mt-6 duration-500 max-w-[70ch] ">
+                  Projelerimi bulut tabanlı ortamlara başarıyla entegre ederken, Kubernetes gibi containerization teknolojilerini etkin bir şekilde kullanıyorum.
+                </li>
+                <li className="mt-4 group-hover:mt-6 duration-500 max-w-[70ch] ">
+                  CI/CD süreçlerini yöneterek, yazılım geliştirme yaşam döngüsünün her aşamasında verimliliği artırıyorum.
+                </li>
+                <li className="mt-4 group-hover:mt-6 duration-500 max-w-[70ch] ">
+                  DevOps prensiplerine olan ilgim sayesinde, geliştirme ve operasyon ekipleri arasında köprü kurarak, hızlı ve güvenilir teslimatlar gerçekleştiriyorum.
+                </li>
+                <li className="mt-4 group-hover:mt-6 duration-500 max-w-[70ch] ">
+                  Agile prensiplerini benimseyerek, ekip çalışmasını ve esnekliği ön planda tutuyor, sürekli öğrenmeye ve yenilikçi çözümler geliştirmeye olan tutkumla, karmaşık problemleri çözmek için etkili yaklaşımlar geliştiriyorum.
                 </li>
               </ul>
             </div>

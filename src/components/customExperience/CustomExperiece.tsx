@@ -50,15 +50,15 @@ function CustomExperiece() {
               <div className="border md:border-4 border-solid border-gega-grey rounded-lg shadow-lg shadow-white hover:scale-105 duration-500 text-gega-white md:min-w-[320px] lg:min-w-[410px]">
                 <div className="border-b md:border-b-2 border-solid border-gega-grey p-1 md:p-4  flex justify-center space-x-2 md:space-x-0 md:justify-between items-center">
                   <h2 className="font-gemunu text-sm md:text-2xl hover:scale-105 duration-500">
-                    Necmettin Erbakan Fen Lisesi
+                    Kocaeli Üniversitesi
                   </h2>
                   <i className="fa-solid fa-school md:text-xl"></i>
                 </div>
 
                 <div className="border-t md:border-t-2 border-solid border-gega-grey p-1 md:p-4 flex flex-col md:flex-row justify-between items-center md:space-x-8">
-                  <span className="text-xs md:text-base">Lise Eğitimi</span>
+                  <span className="text-xs md:text-base">Bilgisayar Mühendisliği</span>
                   <span className="text-xs md:text-base">
-                    Eylül 2016 - Haziran 2020
+                   Eylül 2020 - Haziran 2024
                   </span>
                 </div>
               </div>
@@ -112,16 +112,16 @@ function CustomExperiece() {
               <div className="border md:border-4 border-solid border-gega-grey rounded-lg shadow-lg shadow-white hover:scale-105 duration-500 text-gega-white md:min-w-[320px] lg:min-w-[410px]">
                 <div className="border-b md:border-b-2 border-solid border-gega-grey p-1 md:p-4  flex justify-center space-x-2 md:space-x-0 md:justify-between items-center">
                   <h2 className="font-gemunu text-sm md:text-2xl hover:scale-105 duration-500">
-                    Kocaeli Üniversitesi
+                    Necmettin Erbakan Fen Lisesi
                   </h2>
                   <i className="fa-solid fa-building-columns md:text-xl"></i>
                 </div>
 
                 <div className="border-t md:border-t-2 border-solid border-gega-grey p-1 md:p-4 flex flex-col md:flex-row justify-between items-center md:space-x-8">
                   <span className="text-xs md:text-base">
-                    Bilgisayar Mühendisliği
+                    Lise Eğitimi
                   </span>
-                  <span className="text-xs md:text-base"> Eylül 2020</span>
+                  <span className="text-xs md:text-base">Eylül 2016 - Haziran 2020</span>
                 </div>
               </div>
 
