@@ -14,7 +14,7 @@ function CustomProject() {
                         <div className='col-span-6 lg:col-span-3 border-2 md:border-4 border-solid border-gega-grey rounded-lg shadow-lg shadow-white hover:scale-105 duration-500'>
                             <div className='border-b md:border-b-2 border-solid border-gega-grey  p-4  flex justify-between items-center'>
                                 <h2 className='font-gemunu text-xl md:text-2xl hover:scale-105 duration-500'>DODKA (TÜBİTAK) <i className="fa-solid fa-star"></i></h2>
-                                <a href="https://github.com/orgs/Abvag-Bitirme-OCR/repositories" target='_blank' rel="noreferrer"> <i className="fa-brands fa-github text-gega-grey text-3xl md:text-4xl"></i></a>
+                                <a href="https://github.com/orgs/Abvag-Bitirme-OCR/repositories" target='_blank' rel="noreferrer" aria-label="Read more about 5"> <i className="fa-brands fa-github text-gega-grey text-3xl md:text-4xl"></i></a>
                             </div>
 
                             <div className='p-6 flex justify-between items-center '>

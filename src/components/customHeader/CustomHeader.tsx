@@ -28,6 +28,7 @@ function CustomHeader() {
               <a
                 href="https://github.com/tahapek5454"
                 target="_blank"
+                aria-label="Read more about 2"
                 rel="noreferrer"
               >
                 <i className="fa-brands fa-github text-gega-grey text-6xl hover:shadow-2xl hover:shadow-gray-500/50 "></i>
@@ -35,6 +36,7 @@ function CustomHeader() {
               <a
                 href="https://www.instagram.com/tahapek"
                 target="_blank"
+                aria-label="Read more about 1"
                 rel="noreferrer"
               >
                 <i className="fa-brands fa-instagram  text-gega-grey text-6xl hover:shadow-2xl hover:shadow-orange-500/50"></i>
@@ -42,6 +44,7 @@ function CustomHeader() {
               <a
                 href="https://www.linkedin.com/in/taha-pek-413b1b221"
                 target="_blank"
+                aria-label="Read more about 3"
                 rel="noreferrer"
               >
                 <i className="fa-brands fa-linkedin  text-gega-grey text-6xl hover:shadow-2xl hover:shadow-cyan-500/50"></i>

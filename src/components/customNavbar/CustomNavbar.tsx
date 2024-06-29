@@ -125,7 +125,7 @@ function CustomNavbar() {
                 <li>
                   <span
                     onClick={() => {
-                      scrollToElement("custom-project");
+                      scrollToElement("custom-abilities");
                       setNavItemIndex(3);
                     }}
                     className={`${
@@ -138,7 +138,7 @@ function CustomNavbar() {
                 <li>
                   <span
                     onClick={() => {
-                      scrollToElement("custom-footer");
+                      scrollToElement("custom-project");
                       setNavItemIndex(4);
                     }}
                     className={`${
@@ -240,7 +240,7 @@ function CustomNavbar() {
             <li>
               <span
                 onClick={() => {
-                  scrollToElement("custom-project");
+                  scrollToElement("custom-abilities");
                   setNavItemIndex(3);
                   setExpand(false);
                 }}

@@ -22,6 +22,7 @@ function CustomFooter() {
               href="https://github.com/tahapek5454"
               target="_blank"
               rel="noreferrer"
+              aria-label="Read more about 7"
               className="col-span-1"
             >
               <i className="fa-brands fa-github text-gega-grey text-3xl"></i>
@@ -30,6 +31,7 @@ function CustomFooter() {
               href="https://www.instagram.com/tahapek"
               target="_blank"
               rel="noreferrer"
+              aria-label="Read more about 8"
               className="col-span-1"
             >
               <i className="fa-brands fa-instagram  text-gega-grey text-3xl"></i>
@@ -38,6 +40,7 @@ function CustomFooter() {
               href="https://www.linkedin.com/in/taha-pek-413b1b221"
               target="_blank"
               rel="noreferrer"
+              aria-label="Read more about 0s"
               className="col-span-1"
             >
               <i className="fa-brands fa-linkedin  text-gega-grey text-3xl"></i>
