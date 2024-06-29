@@ -6,7 +6,7 @@ function CustomProject() {
             <section className='py-16 md:py-24 px-4 bg-gradient-to-b from-gray-800 via-gray-900 to-black' id='custom-project'>
 
                 <div className="container">
-                    <h2 className='text-3xl md:text-5xl text-gega-red tracking-wider mb-12'>PROJELER</h2>
+                    <h2 className='text-center sm:text-left text-3xl md:text-5xl text-gega-red tracking-wider mb-12'>PROJELER</h2>
 
 
                     <div className='grid grid-cols-6 gap-10 text-gega-grey'>

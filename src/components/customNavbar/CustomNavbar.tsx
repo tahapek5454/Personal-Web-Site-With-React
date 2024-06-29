@@ -56,8 +56,9 @@ function CustomNavbar() {
   const idFilter = (id: string) => {
     if (id === "custom-about") return 1;
     if (id === "custom-ex") return 2;
-    if (id === "custom-project") return 3;
-    if (id === "custom-footer") return 4;
+    if (id === "custom-abilities") return 3;
+    if (id === "custom-project") return 4;
+    if (id === "custom-footer") return 5;
   };
 
   const scrollToElement = (id: string) => {
@@ -81,7 +82,7 @@ function CustomNavbar() {
             </span>
 
             <div
-              className="flex absolute right-1 items-center top-6 pr-7 md:hidden"
+              className="flex absolute right-1 items-center top-6 pr-7 lg:hidden"
               onClick={() => setExpand(!isExpand)}
             >
               <div className="space-y-1 cursor-pointer">
@@ -91,7 +92,7 @@ function CustomNavbar() {
               </div>
             </div>
 
-            <nav className={`hidden md:flex md:justify-between flex-1`}>
+            <nav className={`hidden lg:flex lg:justify-between flex-1`}>
               <div></div>
 
               <ul className="flex items-center space-x-6  lg:space-x-8 lg:text-lg ">
@@ -131,7 +132,7 @@ function CustomNavbar() {
                       navItemIndex === 3 ? "active " : ""
                     } hover:text-gega-melon transition duration-500 hover:cursor-pointer`}
                   >
-                    PROJELER
+                    KABİLİYETLER
                   </span>
                 </li>
                 <li>
@@ -142,6 +143,19 @@ function CustomNavbar() {
                     }}
                     className={`${
                       navItemIndex === 4 ? "active " : ""
+                    } hover:text-gega-melon transition duration-500 hover:cursor-pointer`}
+                  >
+                    PROJELER
+                  </span>
+                </li>
+                <li>
+                  <span
+                    onClick={() => {
+                      scrollToElement("custom-footer");
+                      setNavItemIndex(5);
+                    }}
+                    className={`${
+                      navItemIndex === 5 ? "active " : ""
                     } hover:text-gega-melon transition duration-500 hover:cursor-pointer`}
                   >
                     İLETİŞİM
@@ -191,15 +205,16 @@ function CustomNavbar() {
             isExpand
               ? "pl-7 bg-black py-4 text-gega-grey font-gemunu flex flex-col justify-between"
               : "hidden"
-          }  md:hidden`}
+          }  lg:hidden`}
         >
-          <div className="bg-gega-grey w-11/12 h-1 rounded-full mb-3 navAnimation"></div>
+          <div className="bg-gega-grey w-[59rem] h-1 rounded-full mb-3 navAnimation"></div>
           <ul className="space-y-4  items-center navAnimation">
             <li>
               <span
                 onClick={() => {
                   scrollToElement("custom-about");
                   setNavItemIndex(1);
+                  setExpand(false);
                 }}
                 className={`${
                   navItemIndex === 1 ? "active " : ""
@@ -213,6 +228,7 @@ function CustomNavbar() {
                 onClick={() => {
                   scrollToElement("custom-ex");
                   setNavItemIndex(2);
+                  setExpand(false);
                 }}
                 className={`${
                   navItemIndex === 2 ? "active " : ""
@@ -226,9 +242,24 @@ function CustomNavbar() {
                 onClick={() => {
                   scrollToElement("custom-project");
                   setNavItemIndex(3);
+                  setExpand(false);
                 }}
                 className={`${
                   navItemIndex === 3 ? "active " : ""
+                } hover:text-gega-melon transition duration-500 hover:cursor-pointer`}
+              >
+                KABİLİYETLER
+              </span>
+            </li>
+            <li>
+              <span
+                onClick={() => {
+                  scrollToElement("custom-project");
+                  setNavItemIndex(4);
+                  setExpand(false);
+                }}
+                className={`${
+                  navItemIndex === 4 ? "active " : ""
                 } hover:text-gega-melon transition duration-500 hover:cursor-pointer`}
               >
                 PROJELER
@@ -238,10 +269,11 @@ function CustomNavbar() {
               <span
                 onClick={() => {
                   scrollToElement("custom-footer");
-                  setNavItemIndex(4);
+                  setNavItemIndex(5);
+                  setExpand(false);
                 }}
                 className={`${
-                  navItemIndex === 4 ? "active " : ""
+                  navItemIndex === 5 ? "active " : ""
                 } hover:text-gega-melon transition duration-500 hover:cursor-pointer`}
               >
                 İLETİŞİM

@@ -6,7 +6,7 @@ function CustomAbilities() {
         id="custom-abilities"
       >
         <div className="container">
-          <h2 className="text-3xl md:text-5xl text-gega-red tracking-wider mb-12">
+          <h2 className="text-center sm:text-left text-3xl md:text-5xl text-gega-red tracking-wider mb-12">
             KABİLİYETLER
           </h2>
 
