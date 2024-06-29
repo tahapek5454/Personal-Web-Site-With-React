@@ -4,6 +4,7 @@ import CustomFooter from "./components/customFooter/CustomFooter";
 import CustomHeader from "./components/customHeader/CustomHeader";
 import CustomNavbar from "./components/customNavbar/CustomNavbar";
 import CustomProject from "./components/customProject/CustomProject";
+import CustomAbilities from "./components/customAbilities/CustomAbilities";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <CustomHeader/>
       <CustomAbout/>
       <CustomExperiece/>
+      <CustomAbilities/>
       <CustomProject/>
       <CustomFooter/>
     </div>
