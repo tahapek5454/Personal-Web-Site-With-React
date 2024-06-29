@@ -39,13 +39,13 @@ function CustomAbout() {
                   Aktif olarak Doğuş Teknoloji şirketinde Software Developer olarak görev almaktayım.
                 </li>
                 <li className="mt-4 group-hover:mt-6 duration-500 max-w-[70ch] ">
-                  Dinamik ve sonuç odaklı bir yazılım geliştirici olarak, hem backend hem de frontend alanlarında deneyime sahibim.
+                  Dinamik ve sonuç odaklı bir yazılım geliştirici olarak, hem backend hem de frontend alanlarında deneyime sahibiyim.
                 </li>
                 <li className="mt-4 group-hover:mt-6 duration-500 max-w-[70ch] ">
                   Projelerimi bulut tabanlı ortamlara başarıyla entegre ederken, Kubernetes gibi containerization teknolojilerini etkin bir şekilde kullanıyorum.
                 </li>
                 <li className="mt-4 group-hover:mt-6 duration-500 max-w-[70ch] ">
-                  CI/CD süreçlerini yöneterek, yazılım geliştirme yaşam döngüsünün her aşamasında verimliliği artırıyorum.
+                  CI/CD süreçlerini yöneterek, yazılım geliştirme yaşam döngüsünün her aşamasında verimliliği arttırıyorum.
                 </li>
                 <li className="mt-4 group-hover:mt-6 duration-500 max-w-[70ch] ">
                   DevOps prensiplerine olan ilgim sayesinde, geliştirme ve operasyon ekipleri arasında köprü kurarak, hızlı ve güvenilir teslimatlar gerçekleştiriyorum.
