@@ -17,7 +17,7 @@ function CustomAbilities() {
               </p>
             </div>
             <div className="col-span-6 lg:col-span-1 px-2 py-4 flex justify-center items-center rounded-[10px] shadow-[16px_16px_20px_#000000] text-sm md:text-xl text-center text-gega-grey hover:scale-105 duration-500">
-                SOLID, Clean Code, Clean Architecuture, Microservice yaklaşımlarında bilgi sahibi.
+                SOLID, Clean Code, Clean Architecture, Microservice yaklaşımlarında bilgi sahibi.
             </div>
             <div className="col-span-6 lg:col-span-1 px-2 py-4 flex justify-center items-center rounded-[10px] shadow-[16px_16px_20px_#000000] text-sm md:text-xl text-center text-gega-grey hover:scale-105 duration-500">
                 Docker, Kubernetes, RabbitMQ, ElasticSearch, MongoDB, PostgreSQL ... teknolojilerinde bilgi sahibi.
