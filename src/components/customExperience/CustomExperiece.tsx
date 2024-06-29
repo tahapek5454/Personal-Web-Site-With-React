@@ -25,9 +25,9 @@ function CustomExperiece() {
 
                 <div className="border-t md:border-t-2 border-solid border-gega-grey p-1 md:p-4 flex flex-col md:flex-row justify-between items-center md:space-x-8">
                   <span className="text-xs md:text-base">
-                    Full-Stack Developer Intern
+                    Software Developer
                   </span>
-                  <span className="text-xs md:text-base"> Temmuz 2023</span>
+                  <span className="text-xs md:text-base"> Şubat 2024</span>
                 </div>
               </div>
 
@@ -62,11 +62,37 @@ function CustomExperiece() {
                   </span>
                 </div>
               </div>
+
+              <a
+                href="https://drive.google.com/file/d/1XsLJrYgkEJFZwcbXQA3dGIHbc-o-rNHS/view?usp=share_link"
+                target="_blank"
+                rel="noreferrer"
+                className="flex justify-center items-center font-gemunu text-gega-grey mt-3 md:mt-0 text-xl md:text-3xl bg-gega-red px-3 py-1 hover:bg-rose-600 transation duration-500 rounded-xl md:min-w-[320px] md:h-16 lg:min-w-[410px] lg:h-24"
+              >
+                <span>CV</span>
+                <i className="fa-solid fa-download text-gega-grey"></i>
+              </a>
             </div>
 
-            <div className="border-l md:border-l-4 border-white h-[37rem] md:h-[62rem] mx-auto"></div>
+            <div className="border-l md:border-l-4 border-white h-[43rem] md:h-[72rem] mx-auto"></div>
 
             <div className="flex flex-col items-start pl-2 md:pl-0 md:items-center mt-28 md:mt-44 space-y-36 md:space-y-56">
+            <div className="border md:border-4 border-solid border-gega-grey rounded-lg shadow-lg shadow-white hover:scale-105 duration-500 text-gega-white md:min-w-[320px] lg:min-w-[410px]">
+                <div className="border-b md:border-b-2 border-solid border-gega-grey p-1 md:p-4  flex justify-center space-x-2 md:space-x-0 md:justify-between items-center">
+                  <h2 className="font-gemunu text-sm md:text-2xl hover:scale-105 duration-500">
+                    Doğuş Teknoloji
+                  </h2>
+                  <i className="fa-solid fa-laptop md:text-xl"></i>
+                </div>
+
+                <div className="border-t md:border-t-2 border-solid border-gega-grey p-1 md:p-4 flex flex-col md:flex-row justify-between items-center md:space-x-8">
+                  <span className="text-xs md:text-base">Software Developer Intern</span>
+                  <span className="text-xs md:text-base">
+                    Temmuz 2023 - Şubat 2024
+                  </span>
+                </div>
+              </div>
+
               <div className="border md:border-4 border-solid border-gega-grey rounded-lg shadow-lg shadow-white hover:scale-105 duration-500 text-gega-white md:min-w-[320px] lg:min-w-[410px]">
                 <div className="border-b md:border-b-2 border-solid border-gega-grey p-1 md:p-4  flex justify-center space-x-2 md:space-x-0 md:justify-between items-center">
                   <h2 className="font-gemunu text-sm md:text-2xl hover:scale-105 duration-500">
@@ -76,7 +102,7 @@ function CustomExperiece() {
                 </div>
 
                 <div className="border-t md:border-t-2 border-solid border-gega-grey p-1 md:p-4 flex flex-col md:flex-row justify-between items-center md:space-x-8">
-                  <span className="text-xs md:text-base">Software Intern</span>
+                  <span className="text-xs md:text-base">Software Developer Intern</span>
                   <span className="text-xs md:text-base">
                     Kasım 2022 - Aralık 2022
                   </span>
@@ -99,15 +125,7 @@ function CustomExperiece() {
                 </div>
               </div>
 
-              <a
-                href="https://drive.google.com/file/d/1XsLJrYgkEJFZwcbXQA3dGIHbc-o-rNHS/view?usp=share_link"
-                target="_blank"
-                rel="noreferrer"
-                className="flex justify-center items-center font-gemunu text-gega-grey mt-3 md:mt-0 text-xl md:text-3xl bg-gega-red px-3 py-1 hover:bg-rose-600 transation duration-500 rounded-xl md:min-w-[320px] md:h-16 lg:min-w-[410px] lg:h-24"
-              >
-                <span>CV</span>
-                <i className="fa-solid fa-download text-gega-grey"></i>
-              </a>
+              
             </div>
           </div>
         </div>

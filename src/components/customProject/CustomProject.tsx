@@ -13,7 +13,7 @@ function CustomProject() {
 
                         <div className='col-span-6 lg:col-span-3 border-2 md:border-4 border-solid border-gega-grey rounded-lg shadow-lg shadow-white hover:scale-105 duration-500'>
                             <div className='border-b md:border-b-2 border-solid border-gega-grey  p-4  flex justify-between items-center'>
-                                <h2 className='font-gemunu text-xl md:text-2xl hover:scale-105 duration-500'>DODKA (TÜBİTAK)</h2>
+                                <h2 className='font-gemunu text-xl md:text-2xl hover:scale-105 duration-500'>DODKA (TÜBİTAK) <i className="fa-solid fa-star"></i></h2>
                                 <a href="https://github.com/orgs/Abvag-Bitirme-OCR/repositories" target='_blank' rel="noreferrer"> <i className="fa-brands fa-github text-gega-grey text-3xl md:text-4xl"></i></a>
                             </div>
 
@@ -41,23 +41,23 @@ function CustomProject() {
 
                         <div className='col-span-6 lg:col-span-3 border-2 md:border-4 border-solid border-gega-grey rounded-lg shadow-lg shadow-white hover:scale-105 duration-500'>
                             <div className='border-b md:border-b-2 border-solid border-gega-grey  p-4  flex justify-between items-center'>
-                                <h2 className='font-gemunu text-xl md:text-2xl hover:scale-105 duration-500'>ASP.NETCore-6-ECommerceAPI</h2>
-                                <a href="https://github.com/tahapek5454/ASP.NETCore-6-ECommerceAPI" target='_blank' rel="noreferrer"> <i className="fa-brands fa-github text-gega-grey text-3xl md:text-4xl"></i></a>
+                                <h2 className='font-gemunu text-xl md:text-2xl hover:scale-105 duration-500'>Cinema-Microservices <i className="fa-solid fa-star"></i></h2>
+                                <a href="https://github.com/tahapek5454/Cinema-MicroServices" target='_blank' rel="noreferrer"> <i className="fa-brands fa-github text-gega-grey text-3xl md:text-4xl"></i></a>
                             </div>
 
                             <div className='p-6 flex justify-between items-center '>
                                 <p className='text-sm md:text-lg font-open'>Bu projenin amacı en yeni teknolojilerden yararlanarak
-                                 Full-Stack bir E-Ticaret projesi geliştirerek ASP.NETCore ortamını tanımak ve kapsamlı bir proje geliştirmektir.</p>
+                                 dağıtık mimaride ölçeklenebilir bir bilet satış platformu inşaa etmek. (.NET 8 - Microservice - Containers - Kubernetes - Cloud)</p>
                             </div>
 
                             <div className='border-t-2 border-solid border-gega-grey p-4 flex justify-end items-center space-x-8'>
 
-                                <a href='https://github.com/tahapek5454/ASP.NETCore-6-ECommerceAPI/archive/refs/heads/main.zip' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
+                                <a href='https://github.com/tahapek5454/Cinema-MicroServices/archive/refs/heads/main.zip' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
                                     <p className='text-black font-gemunu text-lg '>İndir </p>
                                     <i className="fa-brands fa-github text-black text-2xl "></i>
                                 </a>
 
-                                <a href='https://github.com/tahapek5454/ASP.NETCore-6-ECommerceAPI' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
+                                <a href='https://github.com/tahapek5454/Cinema-MicroServices' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
                                     <p className='text-black font-gemunu text-lg '>Repo</p>
                                     <i className="fa-brands fa-github text-black text-2xl "></i>
                                 </a>
@@ -141,6 +141,61 @@ function CustomProject() {
                                 <a href='https://github.com/tahapek5454/RabbitMQ-With-NETCore' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
                                     <p className='text-black font-gemunu text-lg '>Repo</p>
                                     <i className="fa-brands fa-github text-black text-2xl "></i>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                        <div className='col-span-6 lg:col-span-3 border-2 md:border-4 border-solid border-gega-grey rounded-lg shadow-lg shadow-white hover:scale-105 duration-500'>
+                            <div className='border-b md:border-b-2 border-solid border-gega-grey  p-4  flex justify-between items-center'>
+                                <h2 className='font-gemunu text-xl md:text-2xl hover:scale-105 duration-500'>Diabetes-Prediction-with-ANN <i className="fa-solid fa-star"></i></h2>
+                                <a href="https://github.com/tahapek5454/Diabetes-Prediction-with-ANN/tree/main" target='_blank' rel="noreferrer"> <i className="fa-brands fa-github text-gega-grey text-3xl md:text-4xl"></i></a>
+                            </div>
+
+                            <div className='p-6 flex justify-between items-center '>
+                                <p className='text-sm md:text-lg font-open'>Bu çalışmada amaç diyabet hasta tespitini kendi kurduğum nöron ağı mimarisiyle birlikte tespit
+                                 etmeye yarayan bir sınıflandırma ağı inşaa etmektir. Mimariye uygun feed-forward ve back-propagation algoritmaları yazılmıştır.
+                                </p>
+                            </div>
+
+                            <div className='border-t-2 border-solid border-gega-grey p-4 flex justify-end items-center space-x-8'>
+
+                                <a href='https://github.com/tahapek5454/Diabetes-Prediction-with-ANN/tree/main/archive/refs/heads/main.zip' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
+                                    <p className='text-black font-gemunu text-lg'>İndir </p>
+                                    <i className="fa-brands fa-github text-black text-2xl "></i>
+                                </a>
+
+                                <a href='https://github.com/tahapek5454/Diabetes-Prediction-with-ANN/tree/main' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
+                                    <p className='text-black font-gemunu text-lg '>Repo</p>
+                                    <i className="fa-brands fa-github text-black text-2xl"></i>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                        <div className='col-span-6 lg:col-span-3 border-2 md:border-4 border-solid border-gega-grey rounded-lg shadow-lg shadow-white hover:scale-105 duration-500'>
+                            <div className='border-b md:border-b-2 border-solid border-gega-grey  p-4  flex justify-between items-center'>
+                                <h2 className='font-gemunu text-xl md:text-2xl hover:scale-105 duration-500'>Saga-Pattern-Orchestration-Eventual-Consistency <i className="fa-solid fa-star"></i></h2>
+                                <a href="https://github.com/tahapek5454/Saga-Pattern-Orchestration-Eventual-Consistency" target='_blank' rel="noreferrer"> <i className="fa-brands fa-github text-gega-grey text-3xl md:text-4xl"></i></a>
+                            </div>
+
+                            <div className='p-6 flex justify-between items-center '>
+                                <p className='text-sm md:text-lg font-open'>Bu çalışmada amaç distributed sistemlerde veri tutuarlılığını sağlanması için kullanılan yöntemlerden
+                                olan Eventual Consistency yöntemini Saga Orchestration yaklaşımıyla birlikte ele almaktır.</p>
+                            </div>
+
+                            <div className='border-t-2 border-solid border-gega-grey p-4 flex justify-end items-center space-x-8'>
+
+                                <a href='https://github.com/tahapek5454/Saga-Pattern-Orchestration-Eventual-Consistency/archive/refs/heads/main.zip' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
+                                    <p className='text-black font-gemunu text-lg'>İndir </p>
+                                    <i className="fa-brands fa-github text-black text-2xl "></i>
+                                </a>
+
+                                <a href='https://github.com/tahapek5454/Saga-Pattern-Orchestration-Eventual-Consistency' target='_blank' rel="noreferrer" className=' bg-gega-grey px-3 py-1 hover:bg-gega-white transation duration-500 rounded-full flex justify-between items-center space-x-4'>
+                                    <p className='text-black font-gemunu text-lg '>Repo</p>
+                                    <i className="fa-brands fa-github text-black text-2xl"></i>
                                 </a>
 
                             </div>

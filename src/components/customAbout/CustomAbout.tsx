@@ -1,6 +1,7 @@
 import React from "react";
 import personAbout from "../../images/tahaAboutImage.jpeg";
 import csharpIcon from "../../images/csharp.png";
+import kubernetesIcon from "../../images/kubernetes-icon.png"
 import "./CustomAbout.css";
 
 function CustomAbout() {
@@ -57,8 +58,8 @@ function CustomAbout() {
                     </div>
                   </li>
                   <li className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 m-5">
-                    <div className="w-full h-full flex rounded-full text-center items-center bg-pek-grey justify-center">
-                      <i className="fa-brands fa-js text-gega-white text-6xl "></i>
+                    <div className="w-full h-full flex rounded-full text-center items-center bg-gega-white justify-center">
+                      <i className="fa-brands fa-js text-black text-6xl "></i>
                     </div>
                   </li>
                   <li className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 m-5">
@@ -67,8 +68,8 @@ function CustomAbout() {
                     </div>
                   </li>
                   <li className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 m-5">
-                    <div className="w-full h-full flex rounded-full text-center items-center bg-pek-grey justify-center">
-                      <i className="fa-brands fa-react text-gega-white text-6xl "></i>
+                    <div className="w-full h-full flex rounded-full text-center items-center bg-gega-white justify-center">
+                      <i className="fa-brands fa-react text-black text-6xl "></i>
                     </div>
                   </li>
                   <li className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 m-5">
@@ -77,8 +78,8 @@ function CustomAbout() {
                     </div>
                   </li>
                   <li className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 m-5">
-                    <div className="w-full h-full flex rounded-full text-center items-center bg-pek-grey justify-center">
-                      <i className="fa-brands fa-vuejs text-gega-white text-6xl "></i>
+                    <div className="w-full h-full flex rounded-full text-center items-center bg-gega-white justify-center">
+                      <i className="fa-brands fa-vuejs text-black text-6xl "></i>
                     </div>
                   </li>
                   <li className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 m-5">
@@ -87,8 +88,8 @@ function CustomAbout() {
                     </div>
                   </li>
                   <li className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 m-5">
-                    <div className="w-full h-full flex rounded-full text-center items-center bg-pek-grey justify-center">
-                      <i className="fa-brands fa-css3-alt text-gega-white text-6xl "></i>
+                    <div className="w-full h-full flex rounded-full text-center items-center bg-gega-white justify-center">
+                      <i className="fa-brands fa-css3-alt text-black text-6xl "></i>
                     </div>
                   </li>
                   <li className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 m-5">
@@ -97,10 +98,20 @@ function CustomAbout() {
                     </div>
                   </li>
                   <li className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 m-5">
+                    <div className="w-full p-2 h-full flex rounded-full text-center items-center bg-gega-white justify-center">
+                      <img src={kubernetesIcon} alt="" />
+                    </div>
+                  </li>
+                  <li className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 m-5">
                     <div className="w-full h-full flex rounded-full text-center items-center bg-pek-grey justify-center">
                       <i className="fa-solid fa-cloud text-gega-white text-6xl "></i>
                     </div>
-                  </li>
+                  </li>    
+                  <li className="w-20 h-20 md:w-24 md:h-24 flex-shrink-0 m-5">
+                    <div className="w-full h-full flex rounded-full text-center items-center bg-gega-white justify-center">
+                      <i className="fa-brands fa-docker text-black text-6xl"></i>
+                    </div>
+                  </li> 
                 </ul>
               </div>
             </div>
