@@ -1,5 +1,7 @@
 import React from 'react'
 import { Card, CardContent, CardHeader } from '../Card'
+import TechnologiesSlider from '../technologies/TechnologiesSlider';
+
 
 function AboutSection() {
     const skills = [
@@ -25,9 +27,10 @@ function AboutSection() {
         }
     ];
 
+
     return (
-        <section className="min-h-screen bg-background py-20 px-4">
-            <div className="max-w-6xl mx-auto">                
+        <section id='hakkimda' className="min-h-screen bg-background py-20 px-4">
+            <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                     <div className="inline-block">
                         <h2 className="text-4xl bigLg:text-5xl font-bold text-foreground mb-6">
@@ -104,6 +107,11 @@ function AboutSection() {
                         ))}
                     </div>
                 </div>
+
+                <div className="mb-16">
+                    <TechnologiesSlider />
+                </div>
+
                 <div className="text-center">
                     <Card variant="elevated" padding="lg" className="max-w-4xl mx-auto bg-white">
                         <CardContent>
