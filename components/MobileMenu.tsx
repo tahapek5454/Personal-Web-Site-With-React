@@ -1,11 +1,16 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Menu from '@/public/icons/menu.svg'
 
 const MobileMenu = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
@@ -13,6 +18,18 @@ const MobileMenu = () => {
 
     const closeMenu = () => {
         setIsMenuOpen(false)
+    }
+
+    // Hydration güvenliği için mounted durumunu kontrol et
+    if (!mounted) {
+        return (
+            <button
+                className='md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200'
+                aria-label='Menu'
+            >
+                <Image src={Menu} alt="Menu" className='text-black' width={32} height={32} />
+            </button>
+        )
     }
 
     return (

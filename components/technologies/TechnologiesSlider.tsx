@@ -1,8 +1,14 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 function TechnologiesSlider() {    
+    const [mounted, setMounted] = useState(false)
+    
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+    
     const technologies = [
     { name: "C#", icon: "/icons/csharp.png", color: "from-purple-500 to-blue-600" },
     { name: "Java Script", icon: "/icons/javascript.png", color: "from-purple-500 to-blue-600" },
@@ -17,6 +23,10 @@ function TechnologiesSlider() {
     { name: "Cloud", icon: "/icons/cloud.webp", color: "from-cyan-400 to-blue-500" },
     { name: "Vue", icon: "/icons/vue.png", color: "from-cyan-400 to-blue-500" },
     ];
+
+    if (!mounted) {
+        return <div className="relative overflow-x-auto h-32"></div>
+    }
     return (
         <div className="relative overflow-x-auto">
             <div
