@@ -33,7 +33,7 @@ function AboutSection() {
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                     <div className="inline-block">
-                        <h2 className="text-4xl bigLg:text-5xl font-bold text-foreground mb-6">
+                        <h2 className="text-4xl bigLg:text-5xl font-bold text-foreground mb-2">
                             Hakkımda
                         </h2>
                         <div className="w-full h-1 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full"></div>

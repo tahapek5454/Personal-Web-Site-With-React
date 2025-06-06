@@ -1,4 +1,5 @@
 import AboutSection from '@/components/sections/AboutSection';
+import ExperienceSection from '@/components/sections/ExperienceSection';
 import HeaderSection from '@/components/sections/HeaderSection';
 
 export default function Home() {
@@ -7,6 +8,8 @@ export default function Home() {
       <HeaderSection />
 
       <AboutSection />
+
+      <ExperienceSection />
     </div>
   );
 }

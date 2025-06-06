@@ -23,11 +23,9 @@ export const Card: React.FC<CardProps> = ({
     default: 'shadow-lg shadow-gray-200/50 border border-gray-100',
     elevated: 'shadow-2xl shadow-gray-300/40 border border-gray-50',
     minimal: 'shadow-md shadow-gray-200/30 border border-gray-200'
-  };
-
-  const hoverClasses = hover3d 
-    ? 'hover:shadow-2xl hover:shadow-gray-300/60 hover:-translate-y-2 hover:scale-[1.02] hover:rotate-1' 
-    : 'hover:shadow-xl hover:shadow-gray-300/50';
+  };  const hoverClasses = hover3d 
+    ? 'hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-1 hover:border-blue-200' 
+    : 'hover:shadow-xl hover:shadow-gray-300/50 hover:border-gray-300';
 
   const paddingClasses = {
     sm: 'p-4',
@@ -41,7 +39,6 @@ export const Card: React.FC<CardProps> = ({
     lg: 'rounded-xl',
     xl: 'rounded-2xl'
   };
-
   return (
     <div 
       className={`
@@ -51,20 +48,28 @@ export const Card: React.FC<CardProps> = ({
         ${paddingClasses[padding]}
         ${roundedClasses[rounded]}
         ${className}
+        group
       `}
       style={{
-        transformStyle: 'preserve-3d',
+        willChange: 'transform, box-shadow',
       }}
     >
-      {/* 3D depth effect with pseudo-element */}
       <div 
-        className="absolute inset-0 bg-gradient-to-br from-transparent to-gray-100/20 rounded-inherit pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-purple-50/0 rounded-inherit pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      />
+      
+      <div 
+        className="absolute inset-0 rounded-inherit pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{
-          transform: 'translateZ(-1px)',
+          background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1))',
+          padding: '1px',
+          mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          maskComposite: 'xor',
+          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          WebkitMaskComposite: 'xor',
         }}
       />
       
-      {/* Content container */}
       <div className="relative z-10">
         {children}
       </div>
@@ -72,7 +77,6 @@ export const Card: React.FC<CardProps> = ({
   );
 };
 
-// Optional: Pre-built card sections for common use cases
 export const CardHeader: React.FC<{ children: React.ReactNode; className?: string }> = ({ 
   children, 
   className = '' 
