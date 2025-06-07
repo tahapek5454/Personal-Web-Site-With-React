@@ -20,7 +20,7 @@ const Navbar = () => {
                             TECRÜBELERİM
                             <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-gray-800 transition-all duration-300 group-hover:w-full'></span>
                         </Link>
-                         <Link href='#kabiliyetler' className='relative font-medium hover:text-gray-600 transition-colors duration-200 group'>
+                        <Link href='#kabiliyetler' className='relative font-medium hover:text-gray-600 transition-colors duration-200 group'>
                             KABİLİYETLERİM
                             <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-gray-800 transition-all duration-300 group-hover:w-full'></span>
                         </Link>
@@ -28,7 +28,7 @@ const Navbar = () => {
                             PROJELER
                             <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-gray-800 transition-all duration-300 group-hover:w-full'></span>
                         </Link>
-                        <Link href='#iletisim' className='relative font-medium hover:text-gray-600 transition-colors duration-200 group'>
+                        <Link href="mailto:tahapek5454@gmail.com?subject=İletişim - Kişisel Web Sitesi&body=Merhaba Taha," className='relative font-medium hover:text-gray-600 transition-colors duration-200 group'>
                             İLETİŞİM
                             <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-gray-800 transition-all duration-300 group-hover:w-full'></span>
                         </Link>

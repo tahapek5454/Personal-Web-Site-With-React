@@ -52,6 +52,9 @@ function HeaderSection() {
                             >
                                 İletişime Geç
                             </Link>
+                            <Link href="https://drive.google.com/file/d/1U53fwn20Z8e2nmEErx6jyiX_TJ8FScJK/view?usp=sharing" target='_blank' className="px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-900 text-white rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+                                CV
+                            </Link>
                         </div>                        
                         <div className="flex space-x-6 justify-center bigLg:justify-start">
                             {/* LinkedIn */}
