@@ -1,3 +1,4 @@
+import AbilitiesSection from '@/components/sections/AbilitiesSection';
 import AboutSection from '@/components/sections/AboutSection';
 import ExperienceSection from '@/components/sections/ExperienceSection';
 import HeaderSection from '@/components/sections/HeaderSection';
@@ -10,6 +11,8 @@ export default function Home() {
       <AboutSection />
 
       <ExperienceSection />
+
+      <AbilitiesSection />
     </div>
   );
 }

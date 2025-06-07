@@ -20,6 +20,10 @@ const Navbar = () => {
                             TECRÜBELERİM
                             <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-gray-800 transition-all duration-300 group-hover:w-full'></span>
                         </Link>
+                         <Link href='#kabiliyetler' className='relative font-medium hover:text-gray-600 transition-colors duration-200 group'>
+                            KABİLİYETLERİM
+                            <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-gray-800 transition-all duration-300 group-hover:w-full'></span>
+                        </Link>
                         <Link href='#projeler' className='relative font-medium hover:text-gray-600 transition-colors duration-200 group'>
                             PROJELER
                             <span className='absolute left-0 bottom-0 w-0 h-0.5 bg-gray-800 transition-all duration-300 group-hover:w-full'></span>
