@@ -62,8 +62,7 @@ function ExperienceSection() {
             type: "education",
             src: "/logos/kou.svg",
             description: "Yazılım geliştirme, algoritma ve veri yapıları konularında derinlemesine eğitim aldım.",
-            skills: ["Algoritma", "Veri Yapıları", "Yazılım Mühendisliği", "Yapay zeka", "Makine Öğrenimi"],
-            css: "absolute -top-16 -right-4 w-[80] h-[80]"
+            skills: ["Algoritma", "Veri Yapıları", "Yazılım Mühendisliği", "Yapay zeka", "Makine Öğrenimi"],            css: "absolute -top-16 -right-4 w-[80] h-[80]"
         },
     ]
 
@@ -91,11 +90,9 @@ function ExperienceSection() {
 
         return () => observer.disconnect()
     }, [mounted])
-
-
     const getItemClassName = (index: number) => {
         if (!mounted) {
-            return 'opacity-100 translate-y-0'
+            return 'opacity-0 translate-y-8'  // Server ve client aynı başlangıç durumu
         }
         return visibleItems.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
     }
@@ -201,7 +198,7 @@ function ExperienceSection() {
                                     alt={exp.title}
                                     width={70}
                                     height={70}
-                                    className='absolute -top-3 -right-3  object-contain z-10'
+                                    className='absolute  -top-3 -right-3  object-contain z-10'
                                 />
                                 <CardHeader className="mb-3">
                                     <div className="flex items-start justify-between mb-3">
