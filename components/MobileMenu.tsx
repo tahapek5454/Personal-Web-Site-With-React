@@ -61,6 +61,13 @@ const MobileMenu = () => {
                         TECRÜBELERİM
                     </Link>
                     <Link 
+                        href='#kabiliyetler' 
+                        onClick={closeMenu}
+                        className='block font-medium py-3 px-4 hover:bg-gray-50 rounded-lg transition-colors duration-200'
+                    >
+                        KABİLİYETLERİM
+                    </Link>
+                    <Link 
                         href='#projeler' 
                         onClick={closeMenu}
                         className='block font-medium py-3 px-4 hover:bg-gray-50 rounded-lg transition-colors duration-200'
@@ -68,7 +75,7 @@ const MobileMenu = () => {
                         PROJELER
                     </Link>
                     <Link 
-                        href='#iletisim' 
+                        href="mailto:tahapek5454@gmail.com?subject=İletişim - Kişisel Web Sitesi&body=Merhaba Taha,"
                         onClick={closeMenu}
                         className='block font-medium py-3 px-4 hover:bg-gray-50 rounded-lg transition-colors duration-200'
                     >
