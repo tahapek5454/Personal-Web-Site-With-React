@@ -48,6 +48,7 @@ function Footer() {
                             <Link
                                 href="https://github.com/tahapek5454"
                                 target="_blank"
+                                aria-label='GitHub profilim'
                                 className='flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200 text-sm'
                             >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -59,6 +60,7 @@ function Footer() {
                             <Link
                                 href="https://www.linkedin.com/in/taha-pek-413b1b221/"
                                 target="_blank"
+                                aria-label='LinkedIn profilim'
                                 className='flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200 text-sm'
                             >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -70,6 +72,7 @@ function Footer() {
                             <Link
                                 href="https://www.instagram.com/tahapek"
                                 target="_blank"
+                                aria-label="Instagram profilimi ziyaret edin"
                                 className='flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200 text-sm'
                             >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -80,6 +83,7 @@ function Footer() {
 
                             <Link
                                 href="mailto:tahapek5454@gmail.com?subject=İletişim - Kişisel Web Sitesi&body=Merhaba Taha,"
+                                aria-label='E-posta gönder'
                                 className='flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200 text-sm'
                             >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -91,6 +95,7 @@ function Footer() {
                             <Link
                                 href="https://drive.google.com/file/d/1U53fwn20Z8e2nmEErx6jyiX_TJ8FScJK/view?usp=sharing"
                                 target="_blank"
+                                aria-label='CV dosyamı görüntüle'
                                 className='flex items-center space-x-2 text-gray-300 hover:text-white transition-colors duration-200 text-sm'
                             >
                                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
