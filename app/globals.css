@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --background: #EEEEEE;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-ibm-plex-sans: var(--font-ibm-plex-sans);
+  --breakpoint-bigLg: 1090px;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+body {
+  background: var(--background);
+  font-family: var(--font-ibm-plex-sans);
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 50px; /* Header yüksekliği için offset */
+}
+
+/* Custom smooth scrolling with more control */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Disable smooth scrolling for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
