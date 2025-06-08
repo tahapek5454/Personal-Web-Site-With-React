@@ -6,16 +6,12 @@ import ProjectSection from '@/components/sections/ProjectSection';
 
 export default function Home() {
   return (
-    <div className="bg-background p-8">
+    <main className="bg-background p-8">
       <HeaderSection />
-
       <AboutSection />
-
       <ExperienceSection />
-
       <AbilitiesSection />
-
       <ProjectSection />
-    </div>
+    </main>
   );
 }

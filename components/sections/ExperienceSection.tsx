@@ -151,9 +151,9 @@ function ExperienceSection() {
                                     <h3 className="text-lg font-bold text-gray-800  mb-1">
                                         {exp.title}
                                     </h3>
-                                    <h4 className="text-lg text-blue-600  font-semibold">
+                                    <h3 className="text-lg text-blue-600  font-semibold">
                                         {exp.company}
-                                    </h4>
+                                    </h3>
                                 </CardHeader>
 
                                 <CardContent>
@@ -211,9 +211,9 @@ function ExperienceSection() {
                                     <h3 className="text-lg md:text-xl font-bold text-gray-800  mb-1">
                                         {exp.title}
                                     </h3>
-                                    <h4 className="text-base md:text-lg text-blue-600  font-semibold">
+                                    <h3 className="text-base md:text-lg text-blue-600  font-semibold">
                                         {exp.company}
-                                    </h4>
+                                    </h3>
                                 </CardHeader>
 
                                 <CardContent>

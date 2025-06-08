@@ -21,9 +21,9 @@ function AbilitiesSection() {
                     <CardContent>
                             <div className="space-y-6">
                                 <div>
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-3">
                                         Yazılım Geliştirme
-                                    </h4>
+                                    </h3>
                                     <p className="text-gray-600 leading-relaxed">
                                         Modern web teknolojileri ile performanslı uygulamalar geliştiriyorum. 
                                         Next.js, Nuxt.js, .NET Core ve WebAPI uzmanım.
@@ -31,18 +31,18 @@ function AbilitiesSection() {
                                 </div>
 
                                 <div>
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-3">
                                         Yazılım Mimarisi
-                                    </h4>
+                                    </h3>
                                     <p className="text-gray-600 leading-relaxed">
                                         SOLID, Clean Code, Clean Architecture ve Microservice 
                                         yaklaşımları ile tasarım patterns uygularım.
                                     </p>                                </div>
 
                                 <div>
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-3">
                                         Problem Çözme
-                                    </h4>
+                                    </h3>
                                     <p className="text-gray-600 leading-relaxed">
                                         Karmaşık problemleri analiz ederek etkili çözümler üretiyorum.
                                         Algoritma tasarımı ve optimizasyon konularında deneyimliyim.
@@ -50,18 +50,18 @@ function AbilitiesSection() {
                                 </div>
 
                                 <div>
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-3">
                                         Takım Çalışması
-                                    </h4>
+                                    </h3>
                                     <p className="text-gray-600 leading-relaxed">
                                         Güçlü iletişim becerileri ile ekip halinde projeler yürütüyorum. 
                                         Agile (Scrum) metodolojileri ve OOP ile etkili çalışırım.
                                     </p>                                </div>
 
                                 <div>
-                                    <h4 className="text-lg font-semibold text-gray-800 mb-3">
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-3">
                                         Sürekli Öğrenme
-                                    </h4>
+                                    </h3>
                                     <p className="text-gray-600 leading-relaxed">
                                         Teknolojideki gelişmeleri takip ediyor, kendimi sürekli 
                                         geliştiriyorum. Yeni teknolojiler öğrenme konusunda hevesliyim.

@@ -113,7 +113,7 @@ function ProjectSection() {
                                 </div>
                                 <div className="p-8 flex flex-col justify-between">
                                     <div>
-                                        <h4 className="text-2xl font-bold text-foreground mb-4">{featuredProject.title}</h4>
+                                        <h3 className="text-2xl font-bold text-foreground mb-4">{featuredProject.title}</h3>
                                         <p className="text-gray-600 mb-4">{featuredProject.longDescription}</p>
                                         <div className="flex flex-wrap gap-2 mb-6">
                                             {featuredProject.technologies.map((tech, index) => (

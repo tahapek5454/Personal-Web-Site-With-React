@@ -97,9 +97,9 @@ function AboutSection() {
                                 className="text-center hover:scale-105 transition-transform duration-300"
                             >
                                 <div className="text-4xl mb-4">{skill.icon}</div>
-                                <h4 className="text-xl font-bold mb-3 text-gray-800">
+                                <h3 className="text-xl font-bold mb-3 text-gray-800">
                                     {skill.title}
-                                </h4>
+                                </h3>
                                 <p className="text-gray-600 text-sm leading-relaxed">
                                     {skill.description}
                                 </p>
