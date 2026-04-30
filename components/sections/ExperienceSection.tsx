@@ -22,11 +22,22 @@ function ExperienceSection() {
 
     const experiences: ExperienceItem[] = [
         {
+            id: 5,
+            title: "Specialist Software Developer",
+            company: "Doğuş Teknoloji",
+            src: "/logos/dt-logo.svg",
+            period: "Nis 2026 - Devam Ediyor",
+            type: "work",
+            description: "Profesyonel yazılım geliştirme projelerinde aktif rol alıyorum.",
+            skills: [".NET", "Nuxt.js", "Next.js", "AI Entegration", "Vue","MSSQL", "PostgreSQL", "Kubernetes", "Docker"],
+            css: "absolute -top-16 -right-4 w-[190] h-[70]"
+        },
+        {
             id: 4,
             title: "Software Developer",
             company: "Doğuş Teknoloji",
             src: "/logos/dt-logo.svg",
-            period: "Şub 2024 - Devam Ediyor",
+            period: "Şub 2024 - Nis 2026",
             type: "work",
             description: "Profesyonel yazılım geliştirme projelerinde aktif rol alıyorum.",
             skills: [".NET", "Nuxt.js", "Next.js", "AI Entegration", "Vue","MSSQL", "PostgreSQL", "Kubernetes", "Docker"],

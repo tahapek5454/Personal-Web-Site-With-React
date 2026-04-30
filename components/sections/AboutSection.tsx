@@ -11,6 +11,11 @@ function AboutSection() {
             icon: "💻"
         },
         {
+            title: "AI & LLM Orchestration",
+            description: "LangChain ve LangGraph ile akıllı agent sistemleri ve LLM orkestrasyon mimarileri",
+            icon: "🤖"
+        },
+        {
             title: "Cloud & DevOps",
             description: "Kubernetes, CI/CD ve bulut tabanlı çözümler",
             icon: "☁️"
@@ -55,6 +60,9 @@ function AboutSection() {
                                 <p className="text-gray-600 text-lg leading-relaxed mb-6">
                                     Projelerimi bulut tabanlı ortamlara başarıyla entegre ederken, Kubernetes gibi containerization teknolojilerini etkin bir şekilde kullanıyorum.
                                 </p>
+                                <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                                    Yapay zeka alanında da aktif çalışmalar yürütüyor; LangChain ve LangGraph gibi modern frameworkleri kullanarak karmaşık LLM orkestrasyon mimarileri tasarlıyorum.
+                                </p>
                                 <p className="text-gray-600 text-lg leading-relaxed">
                                     DevOps prensiplerine olan ilgim sayesinde, geliştirme ve operasyon ekipleri arasında köprü kurarak, hızlı ve güvenilir teslimatlar gerçekleştiriyorum.
                                 </p>
@@ -88,7 +96,7 @@ function AboutSection() {
                     <h3 className="text-3xl bigLg:text-4xl font-bold text-center mb-12 text-foreground">
                         Uzmanlık Alanlarım
                     </h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                         {skills.map((skill, index) => (
                             <Card
                                 key={index}

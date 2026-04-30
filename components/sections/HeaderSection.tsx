@@ -29,17 +29,19 @@ function HeaderSection() {
                         <div className="space-y-4">
                             <h1 className="text-4xl bigLg:text-5xl font-bold text-foreground leading-tight">
                                 Merhaba, Ben Taha Pek
-                                <span className="block bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-transparent">
-                                    Full Stack Developer
-                                </span>
+                                
+                             
                             </h1>
+                            <span className="block font-bold text-3xl bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-transparent">
+                                Specialist Software Developer
+                            </span>
 
                             <p className="text-lg bigLg:text-xl text-gray-600 max-w-2xl leading-relaxed">
                             09.08.2002 Sakarya' da doğdum.
                             <br />
                             Kocaeli Üniversitesi Bilgisayar Mühendisliği mezunuyum.
                             <br />
-                            Aktif olarak Doğuş Teknoloji şirketinde Software Developer olarak görev almaktayım.
+                            Aktif olarak Doğuş Teknoloji şirketinde Specialist Software Developer olarak görev almaktayım.
                             </p>
                         </div>                       
                         <div className="flex flex-col sm:flex-row gap-4 justify-center bigLg:justify-start">                           

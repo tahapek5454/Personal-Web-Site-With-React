@@ -37,7 +37,18 @@ function AbilitiesSection() {
                                     <p className="text-gray-600 leading-relaxed">
                                         SOLID, Clean Code, Clean Architecture ve Microservice 
                                         yaklaşımları ile tasarım patterns uygularım.
-                                    </p>                                </div>
+                                    </p>                                
+                                </div>
+
+                                <div>
+                                    <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                                        Yapay Zeka
+                                    </h3>
+                                    <p className="text-gray-600 leading-relaxed">
+                                        LangChain ve LangGraph frameworkleri ile karmaşık LLM orkestrasyon mimarileri geliştiriyorum.
+                                        Büyük dil modellerini iş süreçlerine entegre eden akıllı agent sistemleri ve çok adımlı akışlar tasarlıyorum.
+                                    </p>
+                                </div>
 
                                 <div>
                                     <h3 className="text-lg font-semibold text-gray-800 mb-3">

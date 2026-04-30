@@ -70,11 +70,11 @@ function ProjectSection() {
         },
         {
             id: 7,
-            title: "RabbitMQ With NETCore",
-            description: "RabbitMQ ile .NETCore mimarisinde microservisler arası haberleşme.",
-            longDescription: "Bu çalışmanın amacı microservisler arası haberleşmenin nasıl yapıldığını ve bir message-broker olan Rabbit-MQ teknolojisinin .NETCore mimarisinde nasıl kullanıldığını öğrenmektir.",
-            technologies: [".Net", "C#", "RabbitMQ"],
-            githubUrl: "https://github.com/tahapek5454/RabbitMQ-With-NETCore"
+            title: "ReAct-Agent-With-LangGraph",
+            description: "LangGraph kullanılarak geliştirilen ReAct (Reasoning and Acting) yaklaşımını benimseyen agent geliştirmeleri.",
+            longDescription: "Bu projede, LangChain ve LangGraph frameworklerini kullanarak karmaşık LLM orkestrasyon mimarileri geliştirdim. ReAct (Reasoning and Acting) yaklaşımını benimseyerek, büyük dil modellerini iş süreçlerine entegre eden akıllı agent sistemleri ve çok adımlı akışlar tasarladım.",
+            technologies: ["Python", "LangChain", "LangGraph"],
+            githubUrl: "https://github.com/tahapek5454/ReAct-Agent-With-LangGraph"
         }
     ];
 
