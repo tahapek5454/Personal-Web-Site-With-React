@@ -1,10 +1,69 @@
-import React from 'react'
+"use client"
+
+import { useRef } from 'react'
 import Image from 'next/image'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import { Card, CardContent } from '../Card'
 
+gsap.registerPlugin(ScrollTrigger, useGSAP)
+
 function AbilitiesSection() {
+    const sectionRef = useRef<HTMLElement | null>(null)
+    const textRef = useRef<HTMLDivElement | null>(null)
+    const imageRef = useRef<HTMLDivElement | null>(null)
+
+    useGSAP(() => {
+        const sectionEl = sectionRef.current
+        const textEl = textRef.current
+        const imageEl = imageRef.current
+
+        if (!sectionEl || !textEl || !imageEl) return
+
+        const media = gsap.matchMedia()
+
+        media.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
+            gsap.fromTo(
+                textEl,
+                { x: -320, opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 2,
+                    ease: 'power3.out',
+                    immediateRender: false,
+                    scrollTrigger: {
+                        trigger: sectionEl,
+                        start: 'top 80%',
+                        end: 'top 15%',
+                        scrub: 1,
+                    },
+                }
+            )
+
+            gsap.fromTo(
+                imageEl,
+                { x: 320, opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 2,
+                    ease: 'power3.out',
+                    immediateRender: false,
+                    scrollTrigger: {
+                        trigger: sectionEl,
+                        start: 'top 80%',
+                        end: 'top 15%',
+                        scrub: 1,
+                    },
+                }
+            )
+        })
+    }, { scope: sectionRef })
+
     return (
-        <section id='kabiliyetler' className="px-4 max-w-7xl mx-auto">
+        <section id='kabiliyetler' ref={sectionRef} className="px-4 max-w-7xl mx-auto">
 
             <div className="text-center mb-16">
                 <div className="inline-block">
@@ -16,7 +75,7 @@ function AbilitiesSection() {
             </div>
 
             <div className='flex flex-col lg:flex-row justify-center items-center'>
-                <div className="relative z-20 w-full lg:max-w-xl xl:max-w-2xl">
+                <div id='abilitiesText' ref={textRef} className="relative z-20 w-full lg:max-w-xl xl:max-w-2xl">
                     <Card variant="elevated" padding="lg" rounded="xl" hover3d={false} className="backdrop-blur-sm bg-white/95">                        
                     <CardContent>
                             <div className="space-y-6">
@@ -82,7 +141,7 @@ function AbilitiesSection() {
                         </CardContent>
                     </Card>
                 </div>
-                <div className="-mt-12 lg:mt-0 lg:-ml-12 xl:-ml-16 flex-shrink-0">
+                <div id='abilitiesImage' ref={imageRef} className="-mt-12 lg:mt-0 lg:-ml-12 xl:-ml-16 flex-shrink-0">
                     <Image
                         src="/images/image2.jpeg"
                         alt="Developer Profile"
@@ -98,8 +157,6 @@ function AbilitiesSection() {
                     />
                 </div>
             </div>
-
-
         </section>
     )
 }

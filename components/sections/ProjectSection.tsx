@@ -1,7 +1,7 @@
-import React from 'react'
 import Link from 'next/link'
 import { Card, CardContent, CardHeader } from '../Card'
 import Image from 'next/image'
+import ProjectSectionAnimation from './ProjectSectionAnimation'
 
 interface Project {
     id: number;
@@ -83,6 +83,7 @@ function ProjectSection() {
 
     return (
         <section id='projeler' className="min-h-screen bg-background py-20 px-4">
+            <ProjectSectionAnimation />
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                     <div className="inline-block">
