@@ -1,6 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   WebGLRenderer,
   Scene,
@@ -14,8 +17,10 @@ import {
   ShaderMaterial,
   CanvasTexture,
   Vector2,
-} from 'three';
-import { CONFIG } from '@/config';
+} from "three";
+import { CONFIG } from "@/config";
+
+gsap.registerPlugin(ScrollTrigger);
 
 // ── Shared vertex shader ─────────────────────────────────────────────────────
 const vertexShader = /* glsl */ `
@@ -97,8 +102,53 @@ void main() {
 
 // ─────────────────────────────────────────────────────────────────────────────
 
+// ── Marquee content — replace these with final copy ──────────────────────────
+const MARQUEE_TOP = "FULL STACK DEVELOPER  ·  REACT  ·  NEXT.JS  ·  TYPESCRIPT  ·  NODE.JS  ·  ";
+const MARQUEE_BOT = "SOFTWARE ENGINEER  ·  UI / UX  ·  OPEN SOURCE  ·  WEB APPS  ·  GSAP  ·  ";
+
 export default function HeroReveal() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const marqueeTopRef = useRef<HTMLDivElement>(null);
+  const marqueeBotRef = useRef<HTMLDivElement>(null);
+
+  // ── Scroll animation ─────────────────────────────────────────────────────
+  useGSAP(
+    () => {
+      if (!canvasRef.current || !sectionRef.current) return;
+
+      gsap.to(canvasRef.current, {
+        scale: 0.5,
+        borderRadius: "40px",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "+=800",
+          pin: true,
+          scrub: 1,
+        },
+      });
+
+      // Marquee top — left → right (element moves right)
+      if (marqueeTopRef.current) {
+        gsap.fromTo(
+          marqueeTopRef.current,
+          { xPercent: -50 },
+          { xPercent: 0, duration: 24, ease: "none", repeat: -1 },
+        );
+      }
+
+      // Marquee bottom — right → left (element moves left)
+      if (marqueeBotRef.current) {
+        gsap.fromTo(
+          marqueeBotRef.current,
+          { xPercent: 0 },
+          { xPercent: -50, duration: 30, ease: "none", repeat: -1 },
+        );
+      }
+    },
+    { scope: sectionRef, dependencies: [] },
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -109,57 +159,64 @@ export default function HeroReveal() {
     const cw = () => document.documentElement.clientWidth;
     const ch = () => document.documentElement.clientHeight; // subtract navbar height
 
-    const renderer = new WebGLRenderer({ canvas, antialias: true, precision: 'highp' });
+    const renderer = new WebGLRenderer({
+      canvas,
+      antialias: true,
+      precision: "highp",
+    });
     renderer.setSize(cw(), ch());
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // ── 2. Camera + Scenes ────────────────────────────────────────────────────
-    const camera   = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
-    const scene    = new Scene();
+    const camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const scene = new Scene();
     const simScene = new Scene();
 
     // ── 3. Ping-pong render targets ───────────────────────────────────────────
     const rtOptions = {
       minFilter: LinearFilter,
       magFilter: LinearFilter,
-      format:    RGBAFormat,
-      type:      FloatType,
+      format: RGBAFormat,
+      type: FloatType,
     };
     const pingPong = [
       new WebGLRenderTarget(CONFIG.simSize, CONFIG.simSize, rtOptions),
       new WebGLRenderTarget(CONFIG.simSize, CONFIG.simSize, rtOptions),
     ];
-    renderer.setRenderTarget(pingPong[0]); renderer.clear();
-    renderer.setRenderTarget(pingPong[1]); renderer.clear();
+    renderer.setRenderTarget(pingPong[0]);
+    renderer.clear();
+    renderer.setRenderTarget(pingPong[1]);
+    renderer.clear();
     renderer.setRenderTarget(null);
 
     let currentTarget = 0;
 
     // ── 4. Mouse state ────────────────────────────────────────────────────────
-    const mouse         = new Vector2(0.5, 0.5);
-    const prevMouse     = new Vector2(0.5, 0.5);
-    const autoMouse     = new Vector2(0.5, 0.5);
+    const mouse = new Vector2(0.5, 0.5);
+    const prevMouse = new Vector2(0.5, 0.5);
+    const autoMouse = new Vector2(0.5, 0.5);
     const prevAutoMouse = new Vector2(0.5, 0.5);
-    let isMoving    = false;
+    let isMoving = false;
     let lastMoveTime = 0;
 
     // ── 5. Placeholder textures ───────────────────────────────────────────────
     function makeColorCanvas(hex: string): CanvasTexture {
-      const c = document.createElement('canvas');
-      c.width = 2; c.height = 2;
-      const ctx = c.getContext('2d')!;
+      const c = document.createElement("canvas");
+      c.width = 2;
+      c.height = 2;
+      const ctx = c.getContext("2d")!;
       ctx.fillStyle = hex;
       ctx.fillRect(0, 0, 2, 2);
       return new CanvasTexture(c);
     }
-    const topPlaceholder    = makeColorCanvas('#0000ff');
-    const bottomPlaceholder = makeColorCanvas('#ff0000');
+    const topPlaceholder = makeColorCanvas("#0000ff");
+    const bottomPlaceholder = makeColorCanvas("#ff0000");
 
     // ── 6. Geometry ───────────────────────────────────────────────────────────
     const geometry = new PlaneGeometry(2, 2);
 
     // ── 7. Texture-size uniform vectors ───────────────────────────────────────
-    const uTopTextureSize    = new Vector2(1, 1);
+    const uTopTextureSize = new Vector2(1, 1);
     const uBottomTextureSize = new Vector2(1, 1);
     const dpr = Math.min(window.devicePixelRatio, 2);
 
@@ -169,11 +226,11 @@ export default function HeroReveal() {
       fragmentShader: fluidFragmentShader,
       uniforms: {
         uPrevTrails: { value: pingPong[0].texture },
-        uMouse:      { value: new Vector2(0.5, 0.5) },
-        uPrevMouse:  { value: new Vector2(0.5, 0.5) },
+        uMouse: { value: new Vector2(0.5, 0.5) },
+        uPrevMouse: { value: new Vector2(0.5, 0.5) },
         uResolution: { value: new Vector2(CONFIG.simSize, CONFIG.simSize) },
-        uDecay:      { value: CONFIG.decay },
-        uIsMoving:   { value: false },
+        uDecay: { value: CONFIG.decay },
+        uIsMoving: { value: false },
       },
     });
 
@@ -181,13 +238,13 @@ export default function HeroReveal() {
       vertexShader,
       fragmentShader: displayFragmentShader,
       uniforms: {
-        uFluid:             { value: pingPong[0].texture },
-        uTopTexture:        { value: topPlaceholder },
-        uBottomTexture:     { value: bottomPlaceholder },
-        uTopTextureSize:    { value: uTopTextureSize },
+        uFluid: { value: pingPong[0].texture },
+        uTopTexture: { value: topPlaceholder },
+        uBottomTexture: { value: bottomPlaceholder },
+        uTopTextureSize: { value: uTopTextureSize },
         uBottomTextureSize: { value: uBottomTextureSize },
-        uResolution:        { value: new Vector2(cw(), ch()) },
-        uDpr:               { value: dpr },
+        uResolution: { value: new Vector2(cw(), ch()) },
+        uDpr: { value: dpr },
       },
     });
 
@@ -202,19 +259,22 @@ export default function HeroReveal() {
       textureUniform: { value: unknown },
     ) {
       const img = new Image();
-      img.crossOrigin = 'Anonymous';
+      img.crossOrigin = "Anonymous";
       img.onload = () => {
         let source: HTMLImageElement | HTMLCanvasElement = img;
         let w = img.naturalWidth;
         let h = img.naturalHeight;
         if (w > CONFIG.maxTextureSize || h > CONFIG.maxTextureSize) {
-          const ratio = Math.min(CONFIG.maxTextureSize / w, CONFIG.maxTextureSize / h);
+          const ratio = Math.min(
+            CONFIG.maxTextureSize / w,
+            CONFIG.maxTextureSize / h,
+          );
           w = Math.floor(w * ratio);
           h = Math.floor(h * ratio);
-          const offscreen = document.createElement('canvas');
-          offscreen.width  = w;
+          const offscreen = document.createElement("canvas");
+          offscreen.width = w;
           offscreen.height = h;
-          offscreen.getContext('2d')!.drawImage(img, 0, 0, w, h);
+          offscreen.getContext("2d")!.drawImage(img, 0, 0, w, h);
           source = offscreen;
         }
         const tex = new CanvasTexture(source);
@@ -226,8 +286,16 @@ export default function HeroReveal() {
       img.src = src;
     }
 
-    loadImage('/images/taha_top.png',    uTopTextureSize,    displayMaterial.uniforms.uTopTexture);
-    loadImage('/images/taha_bot.png', uBottomTextureSize, displayMaterial.uniforms.uBottomTexture);
+    loadImage(
+      "/images/taha_top.png",
+      uTopTextureSize,
+      displayMaterial.uniforms.uTopTexture,
+    );
+    loadImage(
+      "/images/taha_bot.png",
+      uBottomTextureSize,
+      displayMaterial.uniforms.uBottomTexture,
+    );
 
     // ── 11. Render loop ───────────────────────────────────────────────────────
     let animId: number;
@@ -241,22 +309,29 @@ export default function HeroReveal() {
         isMoving = false;
       }
 
-      const idleTime   = now - lastMoveTime;
+      const idleTime = now - lastMoveTime;
       const autoActive = idleTime > CONFIG.idleThresholdMs;
 
       // Ping-pong swap
-      const prevTarget  = pingPong[currentTarget];
-      currentTarget     = (currentTarget + 1) % 2;
+      const prevTarget = pingPong[currentTarget];
+      currentTarget = (currentTarget + 1) % 2;
       const writeTarget = pingPong[currentTarget];
 
       trailsMaterial.uniforms.uPrevTrails.value = prevTarget.texture;
 
       if (autoActive) {
-        const easeIn  = Math.min(1, (idleTime - CONFIG.idleThresholdMs) / CONFIG.idleEaseInMs);
-        const t       = now * 0.001;
+        const easeIn = Math.min(
+          1,
+          (idleTime - CONFIG.idleThresholdMs) / CONFIG.idleEaseInMs,
+        );
+        const t = now * 0.001;
         // Layered incommensurate sines — organic path, never off-canvas
-        const targetX = 0.5 + 0.30 * Math.sin(t * 0.41) + 0.12 * Math.sin(t * 0.93 + 1.3);
-        const targetY = 0.5 + 0.28 * Math.cos(t * 0.37 + 0.5) + 0.10 * Math.cos(t * 1.11 + 2.7);
+        const targetX =
+          0.5 + 0.3 * Math.sin(t * 0.41) + 0.12 * Math.sin(t * 0.93 + 1.3);
+        const targetY =
+          0.5 +
+          0.28 * Math.cos(t * 0.37 + 0.5) +
+          0.1 * Math.cos(t * 1.11 + 2.7);
 
         prevAutoMouse.copy(autoMouse);
         autoMouse.x += (targetX - autoMouse.x) * CONFIG.autoLerp * easeIn;
@@ -294,15 +369,17 @@ export default function HeroReveal() {
     // ── 12. Input handlers ────────────────────────────────────────────────────
     function onMouseMove(e: MouseEvent) {
       const rect = canvas!.getBoundingClientRect();
-      const now  = performance.now();
+      const now = performance.now();
       if (
-        e.clientX >= rect.left && e.clientX <= rect.right &&
-        e.clientY >= rect.top  && e.clientY <= rect.bottom
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom
       ) {
         prevMouse.copy(mouse);
-        mouse.x  = (e.clientX - rect.left) / rect.width;
-        mouse.y  = 1 - (e.clientY - rect.top) / rect.height;
-        isMoving    = true;
+        mouse.x = (e.clientX - rect.left) / rect.width;
+        mouse.y = 1 - (e.clientY - rect.top) / rect.height;
+        isMoving = true;
         lastMoveTime = now;
       } else {
         isMoving = false;
@@ -312,17 +389,19 @@ export default function HeroReveal() {
 
     function onTouchMove(e: TouchEvent) {
       e.preventDefault();
-      const rect  = canvas!.getBoundingClientRect();
-      const now   = performance.now();
+      const rect = canvas!.getBoundingClientRect();
+      const now = performance.now();
       const touch = e.touches[0];
       if (
-        touch.clientX >= rect.left && touch.clientX <= rect.right &&
-        touch.clientY >= rect.top  && touch.clientY <= rect.bottom
+        touch.clientX >= rect.left &&
+        touch.clientX <= rect.right &&
+        touch.clientY >= rect.top &&
+        touch.clientY <= rect.bottom
       ) {
         prevMouse.copy(mouse);
-        mouse.x  = (touch.clientX - rect.left) / rect.width;
-        mouse.y  = 1 - (touch.clientY - rect.top) / rect.height;
-        isMoving    = true;
+        mouse.x = (touch.clientX - rect.left) / rect.width;
+        mouse.y = 1 - (touch.clientY - rect.top) / rect.height;
+        isMoving = true;
         lastMoveTime = now;
       } else {
         isMoving = false;
@@ -332,19 +411,22 @@ export default function HeroReveal() {
     function onResize() {
       renderer.setSize(cw(), ch());
       displayMaterial.uniforms.uResolution.value.set(cw(), ch());
-      displayMaterial.uniforms.uDpr.value = Math.min(window.devicePixelRatio, 2);
+      displayMaterial.uniforms.uDpr.value = Math.min(
+        window.devicePixelRatio,
+        2,
+      );
     }
 
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('touchmove', onTouchMove, { passive: false });
-    window.addEventListener('resize', onResize);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("resize", onResize);
 
     // ── 13. Cleanup ───────────────────────────────────────────────────────────
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('touchmove', onTouchMove);
-      window.removeEventListener('resize', onResize);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("resize", onResize);
       pingPong[0].dispose();
       pingPong[1].dispose();
       trailsMaterial.dispose();
@@ -357,8 +439,89 @@ export default function HeroReveal() {
   }, []);
 
   return (
-    <section className="hero">
-      <canvas ref={canvasRef} />
-    </section>
+    <div>
+      <section ref={sectionRef} className="hero">
+        {/* ── Background marquees (visible when canvas is scaled down) ── */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "2.5rem",
+            zIndex: 0,
+            pointerEvents: "none",
+            overflow: "hidden",
+          }}
+        >
+          {/* Row 1 — blue, scrolls left → right */}
+          <div style={{ overflow: "hidden", width: "100%" }}>
+            <div
+              ref={marqueeTopRef}
+              style={{
+                display: "flex",
+                width: "max-content",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {[0, 1].map((i) => (
+                <span
+                  key={i}
+                  style={{
+                    fontSize: "clamp(3.5rem, 8vw, 7.5rem)",
+                    fontWeight: 900,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: "#1d4ed8",
+                    opacity: 0.85,
+                    userSelect: "none",
+                    fontFamily: "inherit",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {MARQUEE_TOP}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 2 — dark, scrolls right → left */}
+          <div style={{ overflow: "hidden", width: "100%" }}>
+            <div
+              ref={marqueeBotRef}
+              style={{
+                display: "flex",
+                width: "max-content",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {[0, 1].map((i) => (
+                <span
+                  key={i}
+                  style={{
+                    fontSize: "clamp(3.5rem, 8vw, 7.5rem)",
+                    fontWeight: 900,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: "#0f172a",
+                    opacity: 0.9,
+                    userSelect: "none",
+                    fontFamily: "inherit",
+                    lineHeight: 1.1,
+                  }}
+                >
+                  {MARQUEE_BOT}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Canvas sits above the marquee */}
+        <canvas id="hero-canvas" ref={canvasRef} style={{ position: "relative", zIndex: 1 }} />
+      </section>
+    </div>
   );
 }
