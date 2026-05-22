@@ -226,8 +226,8 @@ export default function HeroReveal() {
       img.src = src;
     }
 
-    loadImage('/images/portrait_top_mini.png',    uTopTextureSize,    displayMaterial.uniforms.uTopTexture);
-    loadImage('/images/portrait_bottom_mini.png', uBottomTextureSize, displayMaterial.uniforms.uBottomTexture);
+    loadImage('/images/taha_top.png',    uTopTextureSize,    displayMaterial.uniforms.uTopTexture);
+    loadImage('/images/taha_bot.png', uBottomTextureSize, displayMaterial.uniforms.uBottomTexture);
 
     // ── 11. Render loop ───────────────────────────────────────────────────────
     let animId: number;
