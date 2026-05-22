@@ -47,13 +47,6 @@ html {
 /* ── Hero reveal canvas ───────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  /* Escape the parent <main p-8> padding on all three sides.
-     Using margin-right instead of width:100vw avoids the scrollbar-width
-     overflow that 100vw causes on Windows / non-overlay-scrollbar systems. */
-  margin-top: -2rem;
-  margin-left: -2rem;
-  margin-right: -2rem;
-  margin-bottom: 3rem;
   height: calc(100vh - 80px);
   overflow: hidden;
 }
