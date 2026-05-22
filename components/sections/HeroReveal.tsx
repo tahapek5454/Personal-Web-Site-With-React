@@ -112,6 +112,8 @@ export default function HeroReveal() {
   const sectionRef = useRef<HTMLElement>(null);
   const marqueeTopRef = useRef<HTMLDivElement>(null);
   const marqueeBotRef = useRef<HTMLDivElement>(null);
+  const loadingRef = useRef<HTMLDivElement>(null);
+  const loadedCountRef = useRef(0);
 
   // ── Scroll animation ─────────────────────────────────────────────────────
   useGSAP(
@@ -294,6 +296,13 @@ export default function HeroReveal() {
         sizeUniform.set(w, h);
         textureUniform.value = tex;
         console.log(`[HeroReveal] Loaded: ${src} (${w}×${h})`);
+        loadedCountRef.current += 1;
+        if (loadedCountRef.current >= 2 && loadingRef.current) {
+          loadingRef.current.style.opacity = "0";
+          setTimeout(() => {
+            loadingRef.current?.remove();
+          }, 700);
+        }
       };
       img.onerror = () => console.error(`[HeroReveal] Failed to load: ${src}`);
       img.src = src;
@@ -458,6 +467,17 @@ export default function HeroReveal() {
 
   return (
     <div className="hero-wrapper">
+      {/* Loading screen */}
+      <div
+        ref={loadingRef}
+        className="fixed inset-0 z-[9999] flex items-center justify-center transition-opacity duration-700"
+        style={{ backgroundColor: "#EEEEEE" }}
+      >
+        <div className="flex flex-col items-center gap-4">
+          <div className="h-10 w-10 animate-spin rounded-full border-4 border-neutral-300 border-t-blue-600" />
+        </div>
+      </div>
+
       <section ref={sectionRef} className="hero">
         {/* ── Background marquees (visible when canvas is scaled down) ── */}
         <div
