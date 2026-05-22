@@ -295,7 +295,6 @@ export default function HeroReveal() {
         const tex = new CanvasTexture(source);
         sizeUniform.set(w, h);
         textureUniform.value = tex;
-        console.log(`[HeroReveal] Loaded: ${src} (${w}×${h})`);
         loadedCountRef.current += 1;
         if (loadedCountRef.current >= 2 && loadingRef.current) {
           loadingRef.current.style.opacity = "0";
