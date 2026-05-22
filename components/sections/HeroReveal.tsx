@@ -1,0 +1,364 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+import {
+  WebGLRenderer,
+  Scene,
+  OrthographicCamera,
+  WebGLRenderTarget,
+  LinearFilter,
+  RGBAFormat,
+  FloatType,
+  PlaneGeometry,
+  Mesh,
+  ShaderMaterial,
+  CanvasTexture,
+  Vector2,
+} from 'three';
+import { CONFIG } from '@/config';
+
+// ── Shared vertex shader ─────────────────────────────────────────────────────
+const vertexShader = /* glsl */ `
+varying vec2 vUv;
+void main() {
+  vUv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+`;
+
+// ── Simulation shader (ping-pong trail mask) ─────────────────────────────────
+const fluidFragmentShader = /* glsl */ `
+uniform sampler2D uPrevTrails;
+uniform vec2 uMouse, uPrevMouse, uResolution;
+uniform float uDecay;
+uniform bool uIsMoving;
+varying vec2 vUv;
+
+void main() {
+  vec4 prev = texture2D(uPrevTrails, vUv);
+  float newValue = prev.r * uDecay;
+
+  if (uIsMoving) {
+    vec2 dir = uMouse - uPrevMouse;
+    float len = length(dir);
+    if (len > 0.001) {
+      vec2 d = dir / len;
+      vec2 toPx = vUv - uPrevMouse;
+      float proj = clamp(dot(toPx, d), 0.0, len);
+      vec2 closest = uPrevMouse + proj * d;
+      float dist = length(vUv - closest);
+      float lineWidth = 0.09;
+      float intensity = smoothstep(lineWidth, 0.0, dist) * 0.3;
+      newValue += intensity;
+    }
+  }
+
+  gl_FragColor = vec4(newValue, 0.0, 0.0, 1.0);
+}
+`;
+
+// ── Display / composite shader ───────────────────────────────────────────────
+const displayFragmentShader = /* glsl */ `
+uniform sampler2D uFluid, uTopTexture, uBottomTexture;
+uniform vec2 uResolution, uTopTextureSize, uBottomTextureSize;
+uniform float uDpr;
+varying vec2 vUv;
+
+vec2 getCoverUV(vec2 uv, vec2 ts) {
+  if (ts.x < 1.0 || ts.y < 1.0) return uv;
+  vec2 s = uResolution / ts;
+  float scale = max(s.x, s.y);
+  vec2 scaled = ts * scale;
+  vec2 offset = (uResolution - scaled) * 0.5;
+  return (uv * uResolution - offset) / scaled;
+}
+
+void main() {
+  float fluid = texture2D(uFluid, vUv).r;
+
+  vec2 topUV    = getCoverUV(vUv, uTopTextureSize);
+  vec2 bottomUV = getCoverUV(vUv, uBottomTextureSize);
+
+  vec4 topColor    = texture2D(uTopTexture,    topUV);
+  vec4 bottomColor = texture2D(uBottomTexture, bottomUV);
+
+  float threshold = 0.02;
+  float edgeWidth = 0.004 / uDpr;
+  float t = smoothstep(threshold, threshold + edgeWidth, fluid);
+
+  float halo = smoothstep(0.0, threshold * 2.0, fluid) * (1.0 - t);
+  vec3 trailGray = vec3(0.12);
+  vec3 tintedTop = mix(topColor.rgb, trailGray, halo * 0.35);
+
+  vec4 finalColor = mix(vec4(tintedTop, topColor.a), bottomColor, t);
+  gl_FragColor = finalColor;
+}
+`;
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+export default function HeroReveal() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    // ── 1. Renderer ───────────────────────────────────────────────────────────
+    // clientWidth/clientHeight exclude the scrollbar — avoids horizontal overflow
+    const cw = () => document.documentElement.clientWidth;
+    const ch = () => document.documentElement.clientHeight; // subtract navbar height
+
+    const renderer = new WebGLRenderer({ canvas, antialias: true, precision: 'highp' });
+    renderer.setSize(cw(), ch());
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // ── 2. Camera + Scenes ────────────────────────────────────────────────────
+    const camera   = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const scene    = new Scene();
+    const simScene = new Scene();
+
+    // ── 3. Ping-pong render targets ───────────────────────────────────────────
+    const rtOptions = {
+      minFilter: LinearFilter,
+      magFilter: LinearFilter,
+      format:    RGBAFormat,
+      type:      FloatType,
+    };
+    const pingPong = [
+      new WebGLRenderTarget(CONFIG.simSize, CONFIG.simSize, rtOptions),
+      new WebGLRenderTarget(CONFIG.simSize, CONFIG.simSize, rtOptions),
+    ];
+    renderer.setRenderTarget(pingPong[0]); renderer.clear();
+    renderer.setRenderTarget(pingPong[1]); renderer.clear();
+    renderer.setRenderTarget(null);
+
+    let currentTarget = 0;
+
+    // ── 4. Mouse state ────────────────────────────────────────────────────────
+    const mouse         = new Vector2(0.5, 0.5);
+    const prevMouse     = new Vector2(0.5, 0.5);
+    const autoMouse     = new Vector2(0.5, 0.5);
+    const prevAutoMouse = new Vector2(0.5, 0.5);
+    let isMoving    = false;
+    let lastMoveTime = 0;
+
+    // ── 5. Placeholder textures ───────────────────────────────────────────────
+    function makeColorCanvas(hex: string): CanvasTexture {
+      const c = document.createElement('canvas');
+      c.width = 2; c.height = 2;
+      const ctx = c.getContext('2d')!;
+      ctx.fillStyle = hex;
+      ctx.fillRect(0, 0, 2, 2);
+      return new CanvasTexture(c);
+    }
+    const topPlaceholder    = makeColorCanvas('#0000ff');
+    const bottomPlaceholder = makeColorCanvas('#ff0000');
+
+    // ── 6. Geometry ───────────────────────────────────────────────────────────
+    const geometry = new PlaneGeometry(2, 2);
+
+    // ── 7. Texture-size uniform vectors ───────────────────────────────────────
+    const uTopTextureSize    = new Vector2(1, 1);
+    const uBottomTextureSize = new Vector2(1, 1);
+    const dpr = Math.min(window.devicePixelRatio, 2);
+
+    // ── 8. ShaderMaterials ────────────────────────────────────────────────────
+    const trailsMaterial = new ShaderMaterial({
+      vertexShader,
+      fragmentShader: fluidFragmentShader,
+      uniforms: {
+        uPrevTrails: { value: pingPong[0].texture },
+        uMouse:      { value: new Vector2(0.5, 0.5) },
+        uPrevMouse:  { value: new Vector2(0.5, 0.5) },
+        uResolution: { value: new Vector2(CONFIG.simSize, CONFIG.simSize) },
+        uDecay:      { value: CONFIG.decay },
+        uIsMoving:   { value: false },
+      },
+    });
+
+    const displayMaterial = new ShaderMaterial({
+      vertexShader,
+      fragmentShader: displayFragmentShader,
+      uniforms: {
+        uFluid:             { value: pingPong[0].texture },
+        uTopTexture:        { value: topPlaceholder },
+        uBottomTexture:     { value: bottomPlaceholder },
+        uTopTextureSize:    { value: uTopTextureSize },
+        uBottomTextureSize: { value: uBottomTextureSize },
+        uResolution:        { value: new Vector2(cw(), ch()) },
+        uDpr:               { value: dpr },
+      },
+    });
+
+    // ── 9. Meshes ─────────────────────────────────────────────────────────────
+    simScene.add(new Mesh(geometry, trailsMaterial));
+    scene.add(new Mesh(geometry, displayMaterial));
+
+    // ── 10. Image loader ──────────────────────────────────────────────────────
+    function loadImage(
+      src: string,
+      sizeUniform: Vector2,
+      textureUniform: { value: unknown },
+    ) {
+      const img = new Image();
+      img.crossOrigin = 'Anonymous';
+      img.onload = () => {
+        let source: HTMLImageElement | HTMLCanvasElement = img;
+        let w = img.naturalWidth;
+        let h = img.naturalHeight;
+        if (w > CONFIG.maxTextureSize || h > CONFIG.maxTextureSize) {
+          const ratio = Math.min(CONFIG.maxTextureSize / w, CONFIG.maxTextureSize / h);
+          w = Math.floor(w * ratio);
+          h = Math.floor(h * ratio);
+          const offscreen = document.createElement('canvas');
+          offscreen.width  = w;
+          offscreen.height = h;
+          offscreen.getContext('2d')!.drawImage(img, 0, 0, w, h);
+          source = offscreen;
+        }
+        const tex = new CanvasTexture(source);
+        sizeUniform.set(w, h);
+        textureUniform.value = tex;
+        console.log(`[HeroReveal] Loaded: ${src} (${w}×${h})`);
+      };
+      img.onerror = () => console.error(`[HeroReveal] Failed to load: ${src}`);
+      img.src = src;
+    }
+
+    loadImage('/images/portrait_top_mini.png',    uTopTextureSize,    displayMaterial.uniforms.uTopTexture);
+    loadImage('/images/portrait_bottom_mini.png', uBottomTextureSize, displayMaterial.uniforms.uBottomTexture);
+
+    // ── 11. Render loop ───────────────────────────────────────────────────────
+    let animId: number;
+
+    function animate() {
+      animId = requestAnimationFrame(animate);
+      const now = performance.now();
+
+      // Stop detection
+      if (isMoving && now - lastMoveTime > CONFIG.stopAfterMs) {
+        isMoving = false;
+      }
+
+      const idleTime   = now - lastMoveTime;
+      const autoActive = idleTime > CONFIG.idleThresholdMs;
+
+      // Ping-pong swap
+      const prevTarget  = pingPong[currentTarget];
+      currentTarget     = (currentTarget + 1) % 2;
+      const writeTarget = pingPong[currentTarget];
+
+      trailsMaterial.uniforms.uPrevTrails.value = prevTarget.texture;
+
+      if (autoActive) {
+        const easeIn  = Math.min(1, (idleTime - CONFIG.idleThresholdMs) / CONFIG.idleEaseInMs);
+        const t       = now * 0.001;
+        // Layered incommensurate sines — organic path, never off-canvas
+        const targetX = 0.5 + 0.30 * Math.sin(t * 0.41) + 0.12 * Math.sin(t * 0.93 + 1.3);
+        const targetY = 0.5 + 0.28 * Math.cos(t * 0.37 + 0.5) + 0.10 * Math.cos(t * 1.11 + 2.7);
+
+        prevAutoMouse.copy(autoMouse);
+        autoMouse.x += (targetX - autoMouse.x) * CONFIG.autoLerp * easeIn;
+        autoMouse.y += (targetY - autoMouse.y) * CONFIG.autoLerp * easeIn;
+
+        trailsMaterial.uniforms.uMouse.value.copy(autoMouse);
+        trailsMaterial.uniforms.uPrevMouse.value.copy(prevAutoMouse);
+        trailsMaterial.uniforms.uIsMoving.value = true;
+
+        // Mirror so next real move continues from here — no stale long segment
+        mouse.copy(autoMouse);
+        prevMouse.copy(prevAutoMouse);
+      } else {
+        trailsMaterial.uniforms.uMouse.value.copy(mouse);
+        trailsMaterial.uniforms.uPrevMouse.value.copy(prevMouse);
+        trailsMaterial.uniforms.uIsMoving.value = isMoving;
+
+        // Mirror so next idle cycle starts from user's last position
+        autoMouse.copy(mouse);
+        prevAutoMouse.copy(mouse);
+      }
+
+      // Render simulation into writeTarget
+      renderer.setRenderTarget(writeTarget);
+      renderer.render(simScene, camera);
+
+      // Render composite to screen
+      displayMaterial.uniforms.uFluid.value = writeTarget.texture;
+      renderer.setRenderTarget(null);
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // ── 12. Input handlers ────────────────────────────────────────────────────
+    function onMouseMove(e: MouseEvent) {
+      const rect = canvas!.getBoundingClientRect();
+      const now  = performance.now();
+      if (
+        e.clientX >= rect.left && e.clientX <= rect.right &&
+        e.clientY >= rect.top  && e.clientY <= rect.bottom
+      ) {
+        prevMouse.copy(mouse);
+        mouse.x  = (e.clientX - rect.left) / rect.width;
+        mouse.y  = 1 - (e.clientY - rect.top) / rect.height;
+        isMoving    = true;
+        lastMoveTime = now;
+      } else {
+        isMoving = false;
+        // Do NOT update lastMoveTime — lets auto-trail keep running
+      }
+    }
+
+    function onTouchMove(e: TouchEvent) {
+      e.preventDefault();
+      const rect  = canvas!.getBoundingClientRect();
+      const now   = performance.now();
+      const touch = e.touches[0];
+      if (
+        touch.clientX >= rect.left && touch.clientX <= rect.right &&
+        touch.clientY >= rect.top  && touch.clientY <= rect.bottom
+      ) {
+        prevMouse.copy(mouse);
+        mouse.x  = (touch.clientX - rect.left) / rect.width;
+        mouse.y  = 1 - (touch.clientY - rect.top) / rect.height;
+        isMoving    = true;
+        lastMoveTime = now;
+      } else {
+        isMoving = false;
+      }
+    }
+
+    function onResize() {
+      renderer.setSize(cw(), ch());
+      displayMaterial.uniforms.uResolution.value.set(cw(), ch());
+      displayMaterial.uniforms.uDpr.value = Math.min(window.devicePixelRatio, 2);
+    }
+
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
+    window.addEventListener('resize', onResize);
+
+    // ── 13. Cleanup ───────────────────────────────────────────────────────────
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('resize', onResize);
+      pingPong[0].dispose();
+      pingPong[1].dispose();
+      trailsMaterial.dispose();
+      displayMaterial.dispose();
+      geometry.dispose();
+      topPlaceholder.dispose();
+      bottomPlaceholder.dispose();
+      renderer.dispose();
+    };
+  }, []);
+
+  return (
+    <section className="hero">
+      <canvas ref={canvasRef} />
+    </section>
+  );
+}
