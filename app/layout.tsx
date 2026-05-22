@@ -160,7 +160,7 @@ export default function RootLayout({
       <body
         className={`${ibmPlexSans.variable} font-ibm-plex-sans text-black antialiased`}
       >
-        {/* <Navbar /> */}
+        <Navbar />
         {children}
         <Footer />
       </body>

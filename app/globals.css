@@ -22,32 +22,25 @@
 body {
   background: var(--background);
   font-family: var(--font-ibm-plex-sans);
+  overflow-x: hidden;
 }
 
 /* Smooth scrolling for anchor links */
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 50px; /* Header yüksekliği için offset */
 }
 
-/* Custom smooth scrolling with more control */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
-/* Disable smooth scrolling for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
+/* Disable smooth scrolling — conflicts with GSAP ScrollTrigger pinning */
 
 /* ── Hero reveal canvas ───────────────────────────────────────────────────── */
 .hero {
   position: relative;
   height: 100vh;
+  overflow: hidden;
+}
+
+/* Pin-spacer created by GSAP — prevent marquee bleed */
+.hero-wrapper {
   overflow: hidden;
 }
 

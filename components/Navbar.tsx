@@ -1,10 +1,22 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import MobileMenu from './MobileMenu'
 
 const Navbar = () => {
+    const [scrolled, setScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 0)
+        }
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
     return (
-        <nav className='w-full h-[80px] bg-white sticky top-0 z-50 shadow-sm'>
+        <nav className={`w-full h-[80px] fixed top-0 z-50 shadow-sm transition-colors duration-300 ${scrolled ? 'bg-white' : 'bg-transparent'}`}>
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full'>
                 <div className='flex justify-between items-center h-full'>
                     <Link href='/' className='flex items-center'>

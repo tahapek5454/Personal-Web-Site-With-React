@@ -103,11 +103,12 @@ void main() {
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ── Marquee content — replace these with final copy ──────────────────────────
-const MARQUEE_TOP = "FULL STACK DEVELOPER  ·  REACT  ·  NEXT.JS  ·  TYPESCRIPT  ·  NODE.JS  ·  ";
-const MARQUEE_BOT = "SOFTWARE ENGINEER  ·  UI / UX  ·  OPEN SOURCE  ·  WEB APPS  ·  GSAP  ·  ";
+const MARQUEE_TOP = "·  DEVELOPER  ·  NEXT.JS  ·  TYPESCRIPT  ·  .NET · PYTHON  ";
+const MARQUEE_BOT = "·  SOFTWARE ENGINEER  ·  UI / UX  ·  OPEN SOURCE  ·  WEB APPS  ·  AI  ";
 
 export default function HeroReveal() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasWrapperRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const marqueeTopRef = useRef<HTMLDivElement>(null);
   const marqueeBotRef = useRef<HTMLDivElement>(null);
@@ -117,7 +118,7 @@ export default function HeroReveal() {
     () => {
       if (!canvasRef.current || !sectionRef.current) return;
 
-      gsap.to(canvasRef.current, {
+      gsap.to(canvasWrapperRef.current, {
         scale: 0.5,
         borderRadius: "40px",
         scrollTrigger: {
@@ -125,7 +126,9 @@ export default function HeroReveal() {
           start: "top top",
           end: "+=800",
           pin: true,
+          pinSpacing: true,
           scrub: 1,
+          anticipatePin: 1,
         },
       });
 
@@ -153,6 +156,16 @@ export default function HeroReveal() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+    // ── 0. Visibility tracking — pause render loop when off-screen ────────────
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0 },
+    );
+    observer.observe(canvas);
 
     // ── 1. Renderer ───────────────────────────────────────────────────────────
     // clientWidth/clientHeight exclude the scrollbar — avoids horizontal overflow
@@ -302,6 +315,10 @@ export default function HeroReveal() {
 
     function animate() {
       animId = requestAnimationFrame(animate);
+
+      // Skip all GPU work when canvas is scrolled out of view
+      if (!isVisible) return;
+
       const now = performance.now();
 
       // Stop detection
@@ -388,7 +405,7 @@ export default function HeroReveal() {
     }
 
     function onTouchMove(e: TouchEvent) {
-      e.preventDefault();
+      if (e.cancelable) e.preventDefault();
       const rect = canvas!.getBoundingClientRect();
       const now = performance.now();
       const touch = e.touches[0];
@@ -418,12 +435,13 @@ export default function HeroReveal() {
     }
 
     window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
     window.addEventListener("resize", onResize);
 
     // ── 13. Cleanup ───────────────────────────────────────────────────────────
     return () => {
       cancelAnimationFrame(animId);
+      observer.disconnect();
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("resize", onResize);
@@ -439,7 +457,7 @@ export default function HeroReveal() {
   }, []);
 
   return (
-    <div>
+    <div className="hero-wrapper">
       <section ref={sectionRef} className="hero">
         {/* ── Background marquees (visible when canvas is scaled down) ── */}
         <div
@@ -519,8 +537,47 @@ export default function HeroReveal() {
           </div>
         </div>
 
-        {/* Canvas sits above the marquee */}
-        <canvas id="hero-canvas" ref={canvasRef} style={{ position: "relative", zIndex: 1 }} />
+        {/* Canvas + overlay — scale together as one unit */}
+        <div ref={canvasWrapperRef} className="absolute inset-0 z-[1] overflow-hidden will-change-transform">
+          <canvas id="hero-canvas" ref={canvasRef} />
+
+          {/* ── Hero text overlay ── */}
+          <div className="absolute inset-0 z-10 flex flex-col justify-between p-8 md:p-10 lg:p-14 pointer-events-none select-none">
+            {/* Top row */}
+            <div className="flex items-start justify-between">
+              <span className="text-[11px] font-semibold tracking-[0.22em] uppercase text-neutral-800">
+                N — 01 / Portfolio 2025–26
+              </span>
+              <span className="flex items-center gap-2.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-neutral-800">
+                <span className="relative flex h-1.5 w-1.5 shrink-0">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-blue-500" />
+                </span>
+                
+              </span>
+            </div>
+
+            {/* Bottom row */}
+            <div className="flex items-end justify-between gap-8">
+              <h1 className="flex flex-col leading-none">
+                <span className="text-[clamp(2.6rem,5vw,4.8rem)] font-black tracking-[-0.025em] text-neutral-900">
+                  Taha Pek
+                </span>
+                <span className="text-[clamp(2rem,4vw,3.8rem)] font-light italic tracking-[-0.01em] text-neutral-600">
+                  — Full Stack Dev.
+                </span>
+              </h1>
+              <div className="flex flex-col items-end gap-2 pb-1">
+                <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500">
+                  Code meets craft
+                </span>
+                <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-neutral-500">
+                  Code. Ship. Repeat.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );
