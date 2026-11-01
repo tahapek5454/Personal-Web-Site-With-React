@@ -50,9 +50,6 @@ export const Card: React.FC<CardProps> = ({
         ${className}
         group
       `}
-      style={{
-        willChange: 'transform, box-shadow',
-      }}
     >
       <div 
         className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-purple-50/0 rounded-inherit pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"

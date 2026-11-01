@@ -33,11 +33,14 @@ function TechnologiesSlider() {
         const track = trackRef.current
         if (!track) return
 
-        tweenRef.current = gsap.to(track, {
-            xPercent: -50,
-            duration: 28,
-            ease: 'none',
-            repeat: -1,
+        const mm = gsap.matchMedia()
+        mm.add('(prefers-reduced-motion: no-preference)', () => {
+            tweenRef.current = gsap.to(track, {
+                xPercent: -50,
+                duration: 28,
+                ease: 'none',
+                repeat: -1,
+            })
         })
     }, { scope: trackRef })
 
@@ -56,7 +59,7 @@ function TechnologiesSlider() {
 
             <div ref={trackRef} className="flex gap-6" style={{ width: 'max-content' }}>
                 {doubled.map((tech, index) => (
-                    <div key={index} className="flex-shrink-0 group">
+                    <div key={index} aria-hidden={index >= technologies.length ? true : undefined} className="flex-shrink-0 group">
                         {/* Gradient border: padding wrapper tekniği */}
                         <div className={`p-[2px] rounded-full bg-gradient-to-br ${tech.color} shadow-md group-hover:shadow-lg group-hover:scale-105 transition-transform duration-200`}>
                             <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center">
@@ -66,7 +69,7 @@ function TechnologiesSlider() {
                                             src={tech.icon}
                                             width={40}
                                             height={40}
-                                            alt={tech.name}
+                                            alt=""
                                             style={{ objectFit: 'contain', width: '40px', height: '40px' }}
                                         />
                                     </div>

@@ -27,7 +27,16 @@ body {
 
 /* Smooth scrolling for anchor links */
 html {
-  scroll-padding-top: 50px; /* Header yüksekliği için offset */
+  scroll-padding-top: 80px; /* fixed navbar height */
+}
+
+/* Scroll reveal: hidden state is only set by JS after hydration (see components/Reveal.tsx). */
+.reveal {
+  transition: opacity 0.7s, transform 0.7s;
+}
+.reveal[data-reveal='hidden'] {
+  opacity: 0;
+  transform: translateY(2rem);
 }
 
 /* Disable smooth scrolling — conflicts with GSAP ScrollTrigger pinning */

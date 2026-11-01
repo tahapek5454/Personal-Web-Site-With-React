@@ -35,7 +35,7 @@ function spawnParticle(side: 'left' | 'right'): HTMLDivElement {
 
 function ProjectSectionAnimation() {
     useGSAP(() => {
-        const sectionEl = document.getElementById('projeler')
+        const sectionEl = document.querySelector('section[aria-labelledby="projects-title"]')
         if (!sectionEl) return
 
         const media = gsap.matchMedia()
