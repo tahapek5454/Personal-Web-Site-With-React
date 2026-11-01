@@ -155,7 +155,7 @@ export const dictionaries: Record<Locale, Dict> = {
                 'DevOps prensiplerine olan ilgim sayesinde, geliştirme ve operasyon ekipleri arasında köprü kurarak, hızlı ve güvenilir teslimatlar gerçekleştiriyorum.',
             ],
             stats: [
-                { value: '2+', label: 'Yıl Deneyim' },
+                { value: '3+', label: 'Yıl Deneyim' },
                 { value: '60+', label: 'Tamamlanan Proje' },
                 { value: '15+', label: 'Teknoloji Stack' },
                 { value: '24/7', label: 'Öğrenme Tutkusu' },
@@ -281,7 +281,7 @@ export const dictionaries: Record<Locale, Dict> = {
                 'Thanks to my interest in DevOps principles, I bridge development and operations teams to deliver fast and reliable releases.',
             ],
             stats: [
-                { value: '2+', label: 'Years of Experience' },
+                { value: '3+', label: 'Years of Experience' },
                 { value: '60+', label: 'Completed Projects' },
                 { value: '15+', label: 'Technology Stack' },
                 { value: '24/7', label: 'Passion for Learning' },

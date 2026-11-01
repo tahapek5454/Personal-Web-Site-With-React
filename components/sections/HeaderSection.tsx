@@ -4,6 +4,10 @@ import { siteConfig } from '@/config/site'
 import { getDict, type Locale } from '@/content/dictionary'
 import { mailto, paths } from '@/lib/i18n'
 import { GithubIcon, InstagramIcon, LinkedinIcon } from '../icons'
+import Marquee from './Marquee'
+
+const MARQUEE_TOP = '·  DEVELOPER  ·  NEXT.JS  ·  TYPESCRIPT  ·  .NET  ·  PYTHON  '
+const MARQUEE_BOTTOM = '·  SOFTWARE ENGINEER  ·  UI / UX  ·  OPEN SOURCE  ·  WEB APPS  ·  AI  '
 
 const external = { target: '_blank', rel: 'noopener noreferrer' } as const
 const primaryBtn =
@@ -19,8 +23,9 @@ function HeaderSection({ lang }: { lang: Locale }) {
     const h = dict.header
 
     return (
-        <div className='bg-background'>
-            <div className="container mx-auto max-w-6xl">
+        <div className='relative flex min-h-svh flex-col justify-center overflow-hidden bg-background         pt-20 pb-4'>
+            <Marquee text={MARQUEE_TOP} variant='outline' />
+                    <div className="container mx-auto my-4 max-w-6xl px-8">
                 <div className="flex flex-col bigLg:flex-row items-center justify-between gap-12 h-full">
                     <div className="flex-1 max-w-md">
                         <div className="relative">
@@ -83,6 +88,7 @@ function HeaderSection({ lang }: { lang: Locale }) {
                     </div>
                 </div>
             </div>
+            <Marquee text={MARQUEE_BOTTOM} variant='solid' reverse />
         </div>
     )
 }
