@@ -45,11 +45,13 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   images: {
     formats: ['image/avif', 'image/webp'],
-    dangerouslyAllowSVG: true,
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [48, 96, 192, 384],
+    qualities: [75],
+    localPatterns: [{ pathname: '/images/**' }, { pathname: '/icons/**' }, { pathname: '/logos/**' }],
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    minimumCacheTTL: 2592000,
-    
-
+    minimumCacheTTL: 31536000,
+    maximumDiskCacheSize: 500_000_000,
   },
   compress: true,
   poweredByHeader: false,

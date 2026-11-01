@@ -34,7 +34,9 @@ function HeaderSection({ lang }: { lang: Locale }) {
                                 alt={h.photoAlt}
                                 width={450}
                                 height={500}
-                                sizes="(max-width: 1090px) 90vw, 450px"
+                                sizes="(max-width: 512px) calc(100vw - 4rem), 448px"
+                                loading="eager"
+                                fetchPriority="high"
                                 style={{ objectFit: 'cover' }}
                                 className="rounded-2xl shadow-2xl"
                                 placeholder="blur"
