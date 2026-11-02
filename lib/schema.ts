@@ -6,6 +6,9 @@ import { abs, absHome, paths, personId, websiteId } from './i18n'
 
 const langTag = (lang: Locale) => (lang === 'tr' ? 'tr-TR' : 'en')
 
+// Google rich results reject date-only values; emit full ISO 8601 with timezone (Turkey, UTC+3).
+const isoDateTime = (date: string) => `${date}T00:00:00+03:00`
+
 export function websiteNode() {
     return {
         '@type': 'WebSite',
@@ -53,7 +56,7 @@ export function profilePageNode(lang: Locale) {
         name: dict.meta.title,
         description: dict.meta.description,
         inLanguage: langTag(lang),
-        dateModified: siteConfig.contentUpdatedAt,
+        dateModified: isoDateTime(siteConfig.contentUpdatedAt),
         isPartOf: { '@id': websiteId },
         mainEntity: { '@id': personId },
     }
@@ -72,7 +75,7 @@ export function projectNode(lang: Locale, project: Project) {
         codeRepository: project.githubUrl,
         keywords: project.technologies.join(', '),
         author: { '@id': personId },
-        dateModified: siteConfig.contentUpdatedAt,
+        dateModified: isoDateTime(siteConfig.contentUpdatedAt),
         ...(project.image ? { image: abs(project.image.src) } : {}),
         isPartOf: { '@id': `${absHome(lang)}#profilepage` },
     }
@@ -105,8 +108,8 @@ export function blogPostingNode(lang: Locale, post: PostMeta) {
         headline: post.title,
         description: post.description,
         inLanguage: langTag(lang),
-        datePublished: post.date,
-        dateModified: modifiedDate(post),
+        datePublished: isoDateTime(post.date),
+        dateModified: isoDateTime(modifiedDate(post)),
         wordCount: post.wordCount,
         articleSection: topicLabel(lang, post.topic).title,
         keywords: post.tags.join(', '),
@@ -135,7 +138,7 @@ export function blogNode(lang: Locale, posts: PostMeta[]) {
             '@id': `${abs(paths.blogPost(lang, p.slug))}#post`,
             url: abs(paths.blogPost(lang, p.slug)),
             headline: p.title,
-            datePublished: p.date,
+            datePublished: isoDateTime(p.date),
         })),
     }
 }
