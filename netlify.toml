@@ -12,3 +12,9 @@
   for = "/logos/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
+
+[[redirects]]
+  from = "https://taha-pek.netlify.app/*"
+  to = "https://tahapek.com/:splat"
+  status = 301
+  force = true
