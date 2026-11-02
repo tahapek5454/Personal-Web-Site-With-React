@@ -16,7 +16,6 @@ export interface Dict {
     meta: {
         title: string
         description: string
-        ogDescription: string
         jobTitle: string
         schemaDescription: string
         keywords: string[]
@@ -27,6 +26,7 @@ export interface Dict {
         experience: string
         skills: string
         projects: string
+        blog: string
         contact: string
         menu: string
         skip: string
@@ -93,6 +93,41 @@ export interface Dict {
         cv: string
         contact: string
     }
+    blog: {
+        title: string
+        subtitle: string
+        metaTitle: string
+        metaDescription: string
+        allTopics: string
+        topicsLabel: string
+        tagsLabel: string
+        searchLabel: string
+        searchPlaceholder: string
+        searchLoading: string
+        noResults: string
+        /** `{n}` is replaced with the result count. */
+        resultsCount: string
+        clearFilters: string
+        /** `{n}` is replaced with minutes. */
+        readingTime: string
+        latestTitle: string
+        latestSubtitle: string
+        viewAll: string
+        emptyTitle: string
+        emptyText: string
+        paginationLabel: string
+        prev: string
+        next: string
+        pageTitle: (page: number) => string
+        tocTitle: string
+        updatedOn: string
+        backToBlog: string
+        topic: string
+        rss: string
+        topicTitle: (topic: string) => string
+        topicDescription: (topic: string) => string
+        breadcrumb: string
+    }
     notFound: { title: string; text: string; home: string }
     mail: { subject: string; body: string }
 }
@@ -107,7 +142,6 @@ export const dictionaries: Record<Locale, Dict> = {
             title: 'Taha Pek - Software Developer',
             description:
                 'Full Stack Developer Taha Pek. .NET, Nuxt.js, Next.js, Vue.js ile modern web uygulamaları geliştiriyorum. Portfolio, projeler ve iletişim.',
-            ogDescription: 'Full Stack Developer Taha Pek. Portfolio, projeler, deneyimler ve iletişim.',
             jobTitle: 'Specialist Software Developer',
             schemaDescription:
                 'Full Stack Software Developer: .NET, Nuxt.js, React, Next.js ve Vue.js ile web uygulamaları ve yapay zeka destekli sistemler geliştiriyor.',
@@ -123,6 +157,7 @@ export const dictionaries: Record<Locale, Dict> = {
             experience: 'TECRÜBELERİM',
             skills: 'KABİLİYETLERİM',
             projects: 'PROJELER',
+            blog: 'BLOG',
             contact: 'İLETİŞİM',
             menu: 'Menü',
             skip: 'Ana içeriğe geç',
@@ -223,6 +258,39 @@ export const dictionaries: Record<Locale, Dict> = {
             cv: 'CV’yi Görüntüle',
             contact: 'İletişim',
         },
+        blog: {
+            title: 'Blog',
+            subtitle: 'Yazılım, yapay zeka ajanları ve mimari üzerine notlar.',
+            metaTitle: 'Blog',
+            metaDescription: 'Taha Pek blog: .NET, yapay zeka ajanları, LangChain ve modern web geliştirme üzerine teknik yazılar.',
+            allTopics: 'Tümü',
+            topicsLabel: 'Konular',
+            tagsLabel: 'Etiketler',
+            searchLabel: 'Yazılarda ara',
+            searchPlaceholder: 'Yazılarda ara…',
+            searchLoading: 'Yükleniyor…',
+            noResults: 'Eşleşen yazı bulunamadı.',
+            resultsCount: '{n} yazı bulundu',
+            clearFilters: 'Filtreleri temizle',
+            readingTime: '{n} dk okuma',
+            latestTitle: 'Son Yazılar',
+            latestSubtitle: 'Blogdaki en yeni teknik yazılar.',
+            viewAll: 'Tüm yazılar',
+            emptyTitle: 'Henüz yazı yok',
+            emptyText: 'Yakında yeni yazılar eklenecek.',
+            paginationLabel: 'Sayfalama',
+            prev: 'Önceki',
+            next: 'Sonraki',
+            pageTitle: (page) => `Sayfa ${page}`,
+            tocTitle: 'İçindekiler',
+            updatedOn: 'Güncellendi',
+            backToBlog: 'Tüm yazılara dön',
+            topic: 'Konu',
+            rss: 'RSS',
+            topicTitle: (topic) => `${topic} yazıları`,
+            topicDescription: (topic) => `${topic} konusundaki tüm blog yazıları.`,
+            breadcrumb: 'Blog',
+        },
         notFound: { title: 'Oops! Sayfa Bulunamadı', text: 'Aradığınız sayfa mevcut değil, taşınmış veya silinmiş olabilir.', home: 'Ana Sayfaya Dön' },
         mail: { subject: 'İletişim - Kişisel Web Sitesi', body: 'Merhaba Taha,' },
     },
@@ -233,7 +301,6 @@ export const dictionaries: Record<Locale, Dict> = {
             title: 'Taha Pek - Software Developer',
             description:
                 'Full Stack Developer Taha Pek builds modern web applications with .NET, Nuxt.js, Next.js and Vue.js. Portfolio, projects and contact.',
-            ogDescription: 'Full Stack Developer Taha Pek. Portfolio, projects, experience and contact.',
             jobTitle: 'Specialist Software Developer',
             schemaDescription:
                 'Full Stack Software Developer building web applications and AI-powered systems with .NET, Nuxt.js, React, Next.js and Vue.js.',
@@ -249,6 +316,7 @@ export const dictionaries: Record<Locale, Dict> = {
             experience: 'EXPERIENCE',
             skills: 'SKILLS',
             projects: 'PROJECTS',
+            blog: 'BLOG',
             contact: 'CONTACT',
             menu: 'Menu',
             skip: 'Skip to main content',
@@ -348,6 +416,39 @@ export const dictionaries: Record<Locale, Dict> = {
             rights: 'All rights reserved.',
             cv: 'View Resume',
             contact: 'Contact',
+        },
+        blog: {
+            title: 'Blog',
+            subtitle: 'Notes on software, AI agents and architecture.',
+            metaTitle: 'Blog',
+            metaDescription: 'Taha Pek blog: technical articles on .NET, AI agents, LangChain and modern web development.',
+            allTopics: 'All',
+            topicsLabel: 'Topics',
+            tagsLabel: 'Tags',
+            searchLabel: 'Search posts',
+            searchPlaceholder: 'Search posts…',
+            searchLoading: 'Loading…',
+            noResults: 'No matching posts found.',
+            resultsCount: '{n} posts found',
+            clearFilters: 'Clear filters',
+            readingTime: '{n} min read',
+            latestTitle: 'Latest Posts',
+            latestSubtitle: 'The newest technical articles from the blog.',
+            viewAll: 'All posts',
+            emptyTitle: 'No posts yet',
+            emptyText: 'New posts are coming soon.',
+            paginationLabel: 'Pagination',
+            prev: 'Previous',
+            next: 'Next',
+            pageTitle: (page) => `Page ${page}`,
+            tocTitle: 'Table of contents',
+            updatedOn: 'Updated',
+            backToBlog: 'Back to all posts',
+            topic: 'Topic',
+            rss: 'RSS',
+            topicTitle: (topic) => `${topic} posts`,
+            topicDescription: (topic) => `All blog posts about ${topic}.`,
+            breadcrumb: 'Blog',
         },
         notFound: { title: 'Oops! Page Not Found', text: 'The page you are looking for does not exist, has moved or was deleted.', home: 'Back to Home' },
         mail: { subject: 'Contact - Personal Website', body: 'Hi Taha,' },

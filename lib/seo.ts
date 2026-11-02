@@ -40,10 +40,15 @@ interface PageMeta {
     /** Pathname of this page per locale; omit a locale if no translation exists. */
     alternates: Partial<Record<Locale, string>>
     /** Markdown twin of this page. */
-    markdown: string
+    markdown?: string
+    /** RSS feed advertised to feed readers. */
+    rss?: string
+    article?: { publishedTime: string; modifiedTime: string; tags: string[]; section: string }
+    /** Overrides the file-based Open Graph image. */
+    image?: string
 }
 
-export function pageMetadata({ lang, title, absoluteTitle, description, alternates, markdown }: PageMeta): Metadata {
+export function pageMetadata({ lang, title, absoluteTitle, description, alternates, markdown, rss, article, image }: PageMeta): Metadata {
     const dict = getDict(lang)
     const self = alternates[lang] ?? paths.home(lang)
     const languages: Record<string, string> = {}
@@ -52,6 +57,9 @@ export function pageMetadata({ lang, title, absoluteTitle, description, alternat
     if (alternates.tr) languages['x-default'] = abs(alternates.tr)
 
     const fullTitle = absoluteTitle ? title : `${title} | ${siteConfig.author}`
+    const types: Record<string, string> = {}
+    if (markdown) types['text/markdown'] = markdown
+    if (rss) types['application/rss+xml'] = rss
 
     return {
         title: absoluteTitle ? { absolute: title } : title,
@@ -59,17 +67,27 @@ export function pageMetadata({ lang, title, absoluteTitle, description, alternat
         alternates: {
             canonical: abs(self),
             languages,
-            types: { 'text/markdown': markdown },
+            types,
         },
         openGraph: {
-            type: 'website',
+            ...(article
+                ? {
+                      type: 'article' as const,
+                      publishedTime: article.publishedTime,
+                      modifiedTime: article.modifiedTime,
+                      authors: [siteConfig.author],
+                      section: article.section,
+                      tags: article.tags,
+                  }
+                : { type: 'website' as const }),
             locale: dict.ogLocale,
-            alternateLocale: lang === 'tr' ? ['en_US'] : ['tr_TR'],
+            alternateLocale: alternates.tr && alternates.en ? (lang === 'tr' ? ['en_US'] : ['tr_TR']) : undefined,
             url: abs(self),
             siteName: siteConfig.name,
             title: fullTitle,
             description,
+            ...(image ? { images: [{ url: abs(image), width: 1200, height: 630 }] } : {}),
         },
-        twitter: { card: 'summary_large_image', title: fullTitle, description },
+        twitter: { card: 'summary_large_image', title: fullTitle, description, ...(image ? { images: [abs(image)] } : {}) },
     }
 }

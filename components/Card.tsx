@@ -83,15 +83,6 @@ export const CardHeader: React.FC<{ children: React.ReactNode; className?: strin
   </div>
 );
 
-export const CardTitle: React.FC<{ children: React.ReactNode; className?: string }> = ({ 
-  children, 
-  className = '' 
-}) => (
-  <h3 className={`text-xl font-semibold text-gray-900 ${className}`}>
-    {children}
-  </h3>
-);
-
 export const CardContent: React.FC<{ children: React.ReactNode; className?: string }> = ({ 
   children, 
   className = '' 
@@ -100,14 +91,3 @@ export const CardContent: React.FC<{ children: React.ReactNode; className?: stri
     {children}
   </div>
 );
-
-export const CardFooter: React.FC<{ children: React.ReactNode; className?: string }> = ({ 
-  children, 
-  className = '' 
-}) => (
-  <div className={`mt-4 pt-4 border-t border-gray-100 ${className}`}>
-    {children}
-  </div>
-);
-
-export default Card;

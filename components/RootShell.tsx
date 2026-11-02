@@ -19,6 +19,7 @@ export default function RootShell({ lang, children }: { lang: Locale; children: 
             { href: `${home}#${dict.ids.experience}`, label: dict.nav.experience },
             { href: `${home}#${dict.ids.skills}`, label: dict.nav.skills },
             { href: `${home}#${dict.ids.projects}`, label: dict.nav.projects },
+            { href: paths.blog(lang), label: dict.nav.blog },
         ],
         contact: { href: mailto(dict.mail.subject, dict.mail.body), label: dict.nav.contact },
         language: { target: lang === 'tr' ? 'en' : 'tr', label: dict.nav.switchLanguage },

@@ -5,6 +5,7 @@ import AbilitiesSection from './AbilitiesSection'
 import AboutSection from './AboutSection'
 import ExperienceSection from './ExperienceSection'
 import HeaderSection from './HeaderSection'
+import LatestPosts from './LatestPosts'
 import ProjectSection from './ProjectSection'
 
 export default function HomePage({ lang }: { lang: Locale }) {
@@ -17,6 +18,7 @@ export default function HomePage({ lang }: { lang: Locale }) {
                 <ExperienceSection lang={lang} />
                 <AbilitiesSection lang={lang} />
                 <ProjectSection lang={lang} />
+                <LatestPosts lang={lang} />
             </div>
         </main>
     )

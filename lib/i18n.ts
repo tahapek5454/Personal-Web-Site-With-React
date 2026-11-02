@@ -31,14 +31,40 @@ export const paths = {
     mdHome: (lang: Locale) => (lang === 'tr' ? '/index.md' : '/en/index.md'),
     mdProject: (lang: Locale, slug: string) =>
         lang === 'tr' ? `/projeler/${slug}.md` : `/en/projects/${slug}.md`,
+    blog: (lang: Locale) => (lang === 'tr' ? '/blog' : '/en/blog'),
+    blogPage: (lang: Locale, page: number): string =>
+        page <= 1 ? paths.blog(lang) : `${paths.blog(lang)}/${lang === 'tr' ? 'sayfa' : 'page'}/${page}`,
+    blogPost: (lang: Locale, slug: string): string => `${paths.blog(lang)}/${slug}`,
+    blogTopic: (lang: Locale, topic: string): string =>
+        `${paths.blog(lang)}/${lang === 'tr' ? 'konu' : 'topic'}/${topic}`,
+    blogRss: (lang: Locale): string => `${paths.blog(lang)}/rss.xml`,
+    blogSearch: (lang: Locale) => `/blog-search/${lang}`,
+    blogOg: (lang: Locale, slug: string) => `/blog-og/${lang}/${slug}`,
+    mdBlog: (lang: Locale) => (lang === 'tr' ? '/blog.md' : '/en/blog.md'),
+    mdBlogPost: (lang: Locale, slug: string): string => `${paths.blogPost(lang, slug)}.md`,
 }
+
+/** Post slugs share the URL namespace with these segments. */
+export const reservedBlogSlugs = ['konu', 'topic', 'sayfa', 'page', 'rss.xml']
 
 /** Equivalent page of the current pathname in another locale. */
 export function localizedPath(pathname: string, target: Locale): string {
     const slug =
         pathname.match(/^\/projeler\/([^/]+)\/?$/)?.[1] ??
         pathname.match(/^\/en\/projects\/([^/]+)\/?$/)?.[1]
-    return slug ? paths.project(target, slug) : paths.home(target)
+    if (slug) return paths.project(target, slug)
+
+    const blog = pathname.match(/^(?:\/en)?\/blog(?:\/(.*?))?\/?$/)
+    if (!blog) return paths.home(target)
+    const rest = blog[1]
+    if (!rest) return paths.blog(target)
+
+    const page = rest.match(/^(?:sayfa|page)\/(\d+)$/)?.[1]
+    if (page) return paths.blogPage(target, Number(page))
+    const topic = rest.match(/^(?:konu|topic)\/([^/]+)$/)?.[1]
+    if (topic) return paths.blogTopic(target, topic)
+    if (/^[^/]+$/.test(rest)) return paths.blogPost(target, rest)
+    return paths.blog(target)
 }
 
 export const abs = (path: string) => `${siteConfig.url}${path === '/' ? '' : path}`

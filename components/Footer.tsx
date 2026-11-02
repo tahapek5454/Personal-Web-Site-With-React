@@ -37,6 +37,7 @@ function Footer({ lang }: { lang: Locale }) {
                             <a href={`${home}#${dict.ids.experience}`} className={quickLink}>{capitalize(dict.nav.experience, lang)}</a>
                             <a href={`${home}#${dict.ids.skills}`} className={quickLink}>{capitalize(dict.nav.skills, lang)}</a>
                             <a href={`${home}#${dict.ids.projects}`} className={quickLink}>{capitalize(dict.nav.projects, lang)}</a>
+                            <a href={paths.blog(lang)} className={quickLink}>{capitalize(dict.nav.blog, lang)}</a>
                             <a href={mail} className={quickLink}>{dict.footer.contact}</a>
                         </div>
                     </div>

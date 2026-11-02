@@ -1,6 +1,7 @@
 import { siteConfig } from '@/config/site'
 import { getDict, type Locale } from '@/content/dictionary'
 import type { Project } from '@/content/projects'
+import { modifiedDate, topicLabel, type PostMeta } from './blog'
 import { abs, absHome, paths, personId, websiteId } from './i18n'
 
 const langTag = (lang: Locale) => (lang === 'tr' ? 'tr-TR' : 'en')
@@ -91,4 +92,50 @@ export function breadcrumbNode(items: { name: string; path: string }[]) {
 
 export function graph(...nodes: object[]) {
     return { '@context': 'https://schema.org', '@graph': nodes }
+}
+
+export function blogPostingNode(lang: Locale, post: PostMeta) {
+    const url = abs(paths.blogPost(lang, post.slug))
+    const alt: Locale = lang === 'tr' ? 'en' : 'tr'
+    return {
+        '@type': 'BlogPosting',
+        '@id': `${url}#post`,
+        url,
+        mainEntityOfPage: url,
+        headline: post.title,
+        description: post.description,
+        inLanguage: langTag(lang),
+        datePublished: post.date,
+        dateModified: modifiedDate(post),
+        wordCount: post.wordCount,
+        articleSection: topicLabel(lang, post.topic).title,
+        keywords: post.tags.join(', '),
+        image: abs(post.cover ?? paths.blogOg(lang, post.slug)),
+        author: { '@id': personId },
+        publisher: { '@id': personId },
+        isPartOf: { '@id': `${abs(paths.blog(lang))}#blog` },
+        workTranslation: { '@id': `${abs(paths.blogPost(alt, post.slug))}#post` },
+    }
+}
+
+export function blogNode(lang: Locale, posts: PostMeta[]) {
+    const dict = getDict(lang)
+    const url = abs(paths.blog(lang))
+    return {
+        '@type': 'Blog',
+        '@id': `${url}#blog`,
+        url,
+        name: dict.blog.title,
+        description: dict.blog.metaDescription,
+        inLanguage: langTag(lang),
+        isPartOf: { '@id': websiteId },
+        publisher: { '@id': personId },
+        blogPost: posts.map((p) => ({
+            '@type': 'BlogPosting',
+            '@id': `${abs(paths.blogPost(lang, p.slug))}#post`,
+            url: abs(paths.blogPost(lang, p.slug)),
+            headline: p.title,
+            datePublished: p.date,
+        })),
+    }
 }

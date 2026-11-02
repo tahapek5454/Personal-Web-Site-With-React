@@ -1,8 +1,6 @@
 export const siteConfig = {
-  url: 'https://taha-pek.netlify.app',
+  url: 'https://tahapek.com',
   name: 'Taha Pek - Software Developer',
-  title: 'Taha Pek - Software Developer',
-  description: 'Full Stack Developer Taha Pek. .NET, Nuxt.js, Next.js, Vue.js ile modern web uygulamaları geliştiriyorum. Portfolio, projeler ve iletişim.',
   author: 'Taha Pek',
   email: 'tahapek5454@gmail.com',
   social: {

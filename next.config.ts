@@ -66,6 +66,10 @@ const nextConfig: NextConfig = {
         { source: '/en/index.md', destination: '/md/en' },
         { source: '/projeler/:slug.md', destination: '/md/tr/:slug' },
         { source: '/en/projects/:slug.md', destination: '/md/en/:slug' },
+        { source: '/blog.md', destination: '/md/tr/blog' },
+        { source: '/en/blog.md', destination: '/md/en/blog' },
+        { source: '/blog/:slug.md', destination: '/md/tr/blog/:slug' },
+        { source: '/en/blog/:slug.md', destination: '/md/en/blog/:slug' },
       ],
     }
   },

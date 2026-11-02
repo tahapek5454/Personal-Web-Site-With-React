@@ -36,10 +36,10 @@ const Navbar = ({ links }: { links: NavLinks }) => {
             <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full'>
                 <div className='flex justify-between items-center h-full'>
                     <a href={links.homeHref} aria-label={links.homeLabel} className='flex items-center'>
-                        <span className='text-4xl font-bold'>TAHA</span>
+                        <span className='text-4xl font-bold'>TAHA</span>{' '}
                         <span className='text-4xl ml-1 font-[200]'>PEK</span>
                     </a>
-                    <div className='hidden md:flex items-center space-x-8'>
+                    <div className='hidden md:flex items-center space-x-4 lg:space-x-8'>
                         {links.items.map((item) => (
                             <a key={item.href} href={item.href} className={linkClass}>
                                 {item.label}
