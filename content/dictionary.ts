@@ -64,6 +64,15 @@ export interface Dict {
         items: { title: string; description: string }[]
         photoAlt: string
     }
+    ai: {
+        title: string
+        intro: string
+        portraitAlt: string
+        gptAlt: string
+        claudeAlt: string
+        logosLabel: string
+        topics: { title: string; description: string }[]
+    }
     projects: {
         title: string
         subtitle: string
@@ -229,6 +238,19 @@ export const dictionaries: Record<Locale, Dict> = {
                 { title: 'Sürekli Öğrenme', description: 'Teknolojideki gelişmeleri takip ediyor, kendimi sürekli geliştiriyorum. Yeni teknolojiler öğrenme konusunda hevesliyim.' },
             ],
         },
+        ai: {
+            title: 'Yapay Zekâ ile Üretim',
+            intro: 'Yapay zekâ ile çalışan sistemler ve agent akışları tasarlıyorum. LangChain ve LangGraph ile çok adımlı süreçler kuruyor; araç kullanımı ve MCP entegrasyonlarıyla bu akışları uygulamalara bağlıyorum. Agent Harness yaklaşımlarını ve Claude Code, OpenCode, Codex gibi kodlama ajanlarını; skills ve plugins ile geliştirme süreçlerime uyarlıyorum.',
+            portraitAlt: 'Taha Pek’in portresi',
+            gptAlt: 'OpenAI GPT logosu',
+            claudeAlt: 'Anthropic Claude logosu',
+            logosLabel: 'Yapay zekâ araçları',
+            topics: [
+                { title: 'Agent sistemleri', description: 'LangChain ve LangGraph ile araç kullanan, çok adımlı akışlar.' },
+                { title: 'Entegrasyon ve çalışma ortamı', description: 'MCP, Agent Harness ve uygulama araçları.' },
+                { title: 'AI destekli geliştirme', description: 'Claude Code, OpenCode ve Codex; skills ve plugins ile özelleştirilmiş iş akışları.' },
+            ],
+        },
         projects: {
             title: 'Kişisel Projelerim',
             subtitle: 'Geliştirdiğim projeleri keşfedin. Her biri farklı teknolojiler ve yaklaşımlar kullanılarak oluşturulmuştur.',
@@ -386,6 +408,19 @@ export const dictionaries: Record<Locale, Dict> = {
                 { title: 'Problem Solving', description: 'I analyze complex problems and produce effective solutions. I am experienced in algorithm design and optimization.' },
                 { title: 'Teamwork', description: 'I run projects in teams with strong communication skills, working effectively with Agile (Scrum) methodologies and OOP.' },
                 { title: 'Continuous Learning', description: 'I follow developments in technology and keep improving myself. I am eager to learn new technologies.' },
+            ],
+        },
+        ai: {
+            title: 'Building with AI',
+            intro: 'I design AI-powered systems and agent workflows. With LangChain and LangGraph, I build multi-step processes and connect them to applications through tool use and MCP integrations. I apply Agent Harness approaches and adapt coding agents such as Claude Code, OpenCode, and Codex to my development workflow with skills and plugins.',
+            portraitAlt: 'Portrait of Taha Pek',
+            gptAlt: 'OpenAI GPT logo',
+            claudeAlt: 'Anthropic Claude logo',
+            logosLabel: 'AI tools',
+            topics: [
+                { title: 'Agent systems', description: 'Tool-using, multi-step workflows with LangChain and LangGraph.' },
+                { title: 'Integrations and runtime', description: 'MCP, Agent Harness, and application tools.' },
+                { title: 'AI-assisted development', description: 'Claude Code, OpenCode, and Codex, with tailored workflows using skills and plugins.' },
             ],
         },
         projects: {

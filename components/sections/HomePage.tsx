@@ -2,6 +2,7 @@ import type { Locale } from '@/content/dictionary'
 import { graph, profilePageNode } from '@/lib/schema'
 import JsonLd from '../JsonLd'
 import AbilitiesSection from './AbilitiesSection'
+import AISection from './AISection'
 import AboutSection from './AboutSection'
 import ExperienceSection from './ExperienceSection'
 import HeaderSection from './HeaderSection'
@@ -15,6 +16,7 @@ export default function HomePage({ lang }: { lang: Locale }) {
             <HeaderSection lang={lang} />
             <div className="p-8">
                 <AboutSection lang={lang} />
+                <AISection lang={lang} />
                 <ExperienceSection lang={lang} />
                 <AbilitiesSection lang={lang} />
                 <ProjectSection lang={lang} />
