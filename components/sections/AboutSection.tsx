@@ -1,7 +1,5 @@
-import React from 'react'
 import { getDict, type Locale } from '@/content/dictionary'
 import { Card, CardContent, CardHeader } from '../Card'
-import TechnologiesSlider from '../technologies/TechnologiesSlider'
 
 function AboutSection({ lang }: { lang: Locale }) {
     const dict = getDict(lang)
@@ -52,43 +50,6 @@ function AboutSection({ lang }: { lang: Locale }) {
                             ))}
                         </dl>
                     </div>
-                </div>
-
-                <div className="mb-16">
-                    <h3 className="text-3xl bigLg:text-4xl font-bold text-center mb-12 text-foreground">
-                        {a.expertiseTitle}
-                    </h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                        {a.expertise.map((skill) => (
-                            <Card
-                                key={skill.title}
-                                variant="elevated"
-                                padding="lg"
-                                className="text-center hover:scale-105 transition-transform duration-300 motion-reduce:transform-none"
-                            >
-                                <div aria-hidden="true" className="text-4xl mb-4">{skill.icon}</div>
-                                <h4 className="text-xl font-bold mb-3 text-gray-800">{skill.title}</h4>
-                                <p className="text-gray-600 text-sm leading-relaxed">{skill.description}</p>
-                            </Card>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="mb-16">
-                    <TechnologiesSlider />
-                </div>
-
-                <div className="text-center">
-                    <Card variant="elevated" padding="lg" className="max-w-4xl mx-auto bg-white">
-                        <CardContent>
-                            <blockquote className="text-xl md:text-2xl text-gray-700 leading-relaxed italic">
-                                “{a.quote}”
-                            </blockquote>
-                            <div className="mt-6 flex justify-center">
-                                <div className="w-16 h-1 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full"></div>
-                            </div>
-                        </CardContent>
-                    </Card>
                 </div>
             </div>
         </section>

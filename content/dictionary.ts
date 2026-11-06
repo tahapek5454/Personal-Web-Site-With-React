@@ -239,7 +239,7 @@ export const dictionaries: Record<Locale, Dict> = {
             ],
         },
         ai: {
-            title: 'Yapay Zekâ ile Üretim',
+            title: 'Yapay Zekâ Çözümleri',
             intro: 'Yapay zekâ ile çalışan sistemler ve agent akışları tasarlıyorum. LangChain ve LangGraph ile çok adımlı süreçler kuruyor; araç kullanımı ve MCP entegrasyonlarıyla bu akışları uygulamalara bağlıyorum. Agent Harness yaklaşımlarını ve Claude Code, OpenCode, Codex gibi kodlama ajanlarını; skills ve plugins ile geliştirme süreçlerime uyarlıyorum.',
             portraitAlt: 'Taha Pek’in portresi',
             gptAlt: 'OpenAI GPT logosu',
@@ -411,7 +411,7 @@ export const dictionaries: Record<Locale, Dict> = {
             ],
         },
         ai: {
-            title: 'Building with AI',
+            title: 'AI Driven Solutions',
             intro: 'I design AI-powered systems and agent workflows. With LangChain and LangGraph, I build multi-step processes and connect them to applications through tool use and MCP integrations. I apply Agent Harness approaches and adapt coding agents such as Claude Code, OpenCode, and Codex to my development workflow with skills and plugins.',
             portraitAlt: 'Portrait of Taha Pek',
             gptAlt: 'OpenAI GPT logo',
