@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { getDict, type Locale } from '@/content/dictionary'
+import AIMascots from './AIMascots'
 
 export default function AISection({ lang }: { lang: Locale }) {
     const ai = getDict(lang).ai
@@ -8,9 +9,10 @@ export default function AISection({ lang }: { lang: Locale }) {
         <section
             id={lang === 'tr' ? 'yapay-zeka' : 'ai'}
             aria-labelledby="ai-section-title"
-            className="-mx-8 w-[calc(100%+4rem)] bg-[#080808] px-6 py-20 text-white sm:px-8"
+            className="relative isolate -mx-8 w-[calc(100%+4rem)] overflow-hidden bg-[#080808] px-6 py-20 text-white sm:px-8"
         >
-            <div className="mx-auto max-w-6xl">
+            <AIMascots />
+            <div className="relative z-10 mx-auto max-w-6xl">
                 <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
                     <div>
                         <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-white/60">AI</p>

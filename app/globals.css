@@ -101,6 +101,129 @@ html {
   }
 }
 
+/* Small coding companions in the AI home section. */
+.ai-mascot-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0.72;
+  contain: layout paint;
+}
+
+.ai-mascot {
+  --float-distance: 44px;
+  position: absolute;
+  top: 8%;
+  left: 6%;
+  width: 88px;
+  filter: drop-shadow(0 8px 22px rgb(0 0 0 / 0.35));
+  animation: mascot-drift 13s ease-in-out infinite;
+}
+
+.ai-mascot-body {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  animation: mascot-bob 3.8s ease-in-out infinite;
+}
+
+.ai-mascot-bubble {
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  right: -24px;
+  display: grid;
+  min-width: 38px;
+  height: 27px;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 999px;
+  background: rgb(32 35 41 / 0.9);
+  color: #f4f4f5;
+  font: 700 10px/1 ui-monospace, monospace;
+  animation: bubble-pop 3.5s ease-in-out infinite;
+}
+
+.ai-mascot-sparkle {
+  position: absolute;
+  top: 16px;
+  right: -15px;
+  color: #fff;
+  font-size: 13px;
+  animation: sparkle 2.8s ease-in-out infinite;
+}
+
+.mascot-path-two { top: 44%; left: 81%; animation-duration: 16s; }
+.mascot-path-three { top: 77%; left: 54%; animation-duration: 14s; }
+.mascot-path-four { top: 68%; left: 11%; animation-duration: 18s; }
+.mascot-path-five { top: 13%; left: 68%; animation-duration: 15s; }
+.mascot-path-two .ai-mascot-body { animation-delay: -1.3s; }
+.mascot-path-three .ai-mascot-body { animation-delay: -2.1s; }
+.mascot-path-four .ai-mascot-body { animation-delay: -0.8s; }
+.mascot-path-five .ai-mascot-body { animation-delay: -2.8s; }
+
+.ai-mascot-orbit {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+  animation: orbit-bubble 7s ease-out infinite;
+}
+.ai-mascot-orbit-one { top: 38%; left: 37%; }
+.ai-mascot-orbit-two { top: 60%; left: 72%; animation-delay: -2.2s; }
+.ai-mascot-orbit-three { top: 18%; left: 47%; animation-delay: -4.4s; }
+
+@keyframes mascot-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+  25% { transform: translate3d(38px, 22px, 0) rotate(5deg); }
+  55% { transform: translate3d(-12px, var(--float-distance), 0) rotate(-2deg); }
+  78% { transform: translate3d(24px, 12px, 0) rotate(4deg); }
+}
+
+@keyframes mascot-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes bubble-pop {
+  0%, 100% { opacity: 0.55; transform: translateY(3px) scale(0.92); }
+  50% { opacity: 1; transform: translateY(-5px) scale(1); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.7) rotate(0); }
+  50% { opacity: 1; transform: scale(1.2) rotate(35deg); }
+}
+
+@keyframes orbit-bubble {
+  0% { opacity: 0; transform: translate(0, 20px) scale(0.5); }
+  20% { opacity: 0.5; }
+  100% { opacity: 0; transform: translate(22px, -50px) scale(1.2); }
+}
+
+@media (max-width: 640px) {
+  .ai-mascot { width: 60px; }
+  .mascot-path-two { top: 51%; left: 83%; }
+  .mascot-path-three { top: 85%; left: 45%; }
+  .mascot-path-four { top: 76%; left: 7%; }
+  .mascot-path-five { top: 10%; left: 77%; }
+}
+
+@media (max-width: 767px) {
+  .ai-mascot-stage { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-mascot,
+  .ai-mascot-body,
+  .ai-mascot-bubble,
+  .ai-mascot-sparkle,
+  .ai-mascot-orbit { animation: none; }
+  .ai-mascot-orbit { display: none; }
+}
+
 /* ── Blog article typography ─────────────────────────────────────────────────── */
 .prose-blog {
   color: #262626;
