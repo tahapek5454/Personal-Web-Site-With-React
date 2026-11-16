@@ -4,6 +4,7 @@ export interface ProjectText {
     title: string
     description: string
     longDescription: string
+    features?: { title: string; description: string }[]
 }
 
 export interface Project {
@@ -12,11 +13,51 @@ export interface Project {
     technologies: string[]
     image?: { src: string; width: number; height: number }
     featured?: boolean
-    kind: 'SoftwareSourceCode' | 'CreativeWork'
+    /** Rendered in its own home page showcase instead of the regular project grid. */
+    showcase?: boolean
+    downloadUrl?: string
+    operatingSystem?: string
+    kind: 'SoftwareSourceCode' | 'CreativeWork' | 'VideoGame'
     text: Record<Locale, ProjectText>
 }
 
 export const projects: Project[] = [
+    {
+        slug: 'tower-climb',
+        githubUrl: 'https://github.com/tahapek5454/Tower-Climb',
+        downloadUrl: 'https://tahapek5454.itch.io/tower-climb',
+        operatingSystem: 'Windows 10/11 (64-bit)',
+        technologies: ['Godot 4', 'GDScript', 'GDShader', 'Blender', 'Python', 'GUT'],
+        image: { src: '/images/projects/tower-climb/rocket-mid.png', width: 1359, height: 753 },
+        showcase: true,
+        kind: 'VideoGame',
+        text: {
+            tr: {
+                title: 'Tower Climb',
+                description: 'Godot 4 ile geliştirdiğim, momentuma dayalı 2D sonsuz kule tırmanma oyunu.',
+                longDescription:
+                    'Tower Climb, Godot 4 ile geliştirdiğim ücretsiz ve açık kaynak bir 2D sonsuz kule tırmanma oyunu. Kartal kahramanı koşturup platformdan platforma zıplatıyorsun; ne kadar hızlı koşarsan o kadar yükseğe zıplıyorsun. Kamera giderek hızlanarak yukarı kayıyor, ekranın altında kalırsan oyun bitiyor. Karakter, toon shader ve dış çizgiyle 2D sahneye çizilen bir 3D model; ses efektleri Python ile kodla sentezlendi, oyun kuralları GUT ile test ediliyor.',
+                features: [
+                    { title: 'Momentum fiziği', description: 'Elle yazılmış hareket, coyote time, zıplama tamponu, değişken zıplama yüksekliği ve duvar sekmesi.' },
+                    { title: 'Kombo sistemi', description: 'Tek zıplayışta 2+ kat atla; kombo puanı atlanan katların karesi kadar.' },
+                    { title: 'Güçlendirmeler', description: 'Roket, kalp, kum saati ve mıknatıs. Yükseldikçe çatlayan, kayan ve buzlu platformlar.' },
+                    { title: 'Elmas mağazası', description: 'Şapkalar, desenler, iz efektleri, kalıcı yükseltmeler ve 15 başarım.' },
+                ],
+            },
+            en: {
+                title: 'Tower Climb',
+                description: 'A momentum-based 2D endless tower climber I built with Godot 4.',
+                longDescription:
+                    'Tower Climb is a free, open-source 2D endless tower climber I built with Godot 4. You run the eagle hero left and right and jump from platform to platform; the faster you run, the higher you fly. The camera keeps speeding up as it scrolls, and if you fall below the screen the game is over. The character is a 3D model drawn into the 2D scene with a toon shader and outline, the sound effects are synthesized in code with Python, and the game rules are tested with GUT.',
+                features: [
+                    { title: 'Momentum physics', description: 'Hand-written movement, coyote time, jump buffering, variable jump height and wall bounces.' },
+                    { title: 'Combo system', description: 'Skip 2+ floors in a single jump; the combo score is the square of the floors skipped.' },
+                    { title: 'Power-ups', description: 'Rocket, heart, hourglass and magnet. Cracking, moving and icy platforms as you climb.' },
+                    { title: 'Diamond shop', description: 'Hats, patterns, trail effects, permanent upgrades and 15 achievements.' },
+                ],
+            },
+        },
+    },
     {
         slug: 'cinema-microservices-d-tix',
         githubUrl: 'https://github.com/tahapek5454/Cinema-MicroServices',

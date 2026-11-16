@@ -224,6 +224,123 @@ html {
   .ai-mascot-orbit { display: none; }
 }
 
+/* ── Tower Climb showcase: palette taken from the game's tower (purple bricks, lavender platforms, string lights, orange eagle). */
+.tc-bricks {
+  background-color: #211b3d;
+  background-image:
+    radial-gradient(55% 45% at 78% 18%, rgb(126 232 242 / 0.16), transparent 70%),
+    radial-gradient(45% 55% at 12% 88%, rgb(255 138 31 / 0.14), transparent 70%),
+    linear-gradient(180deg, transparent 55%, rgb(12 9 26 / 0.65)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='64'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.06' stroke-width='2'%3E%3Cpath d='M0 1H120M0 33H120M1 1V33M61 33V64'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(160deg, #2f2758, #1a1531 70%);
+  box-shadow: inset 0 0 0 1px rgb(183 164 245 / 0.18);
+}
+
+.tc-title {
+  background: linear-gradient(180deg, #fff 30%, #d9ccff 65%, #9f8be8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 0 #3b2f6e) drop-shadow(0 14px 24px rgb(0 0 0 / 0.45));
+}
+
+.tc-shot {
+  background: linear-gradient(135deg, #c9b8ff, #6d5fb3 45%, #2b8c9b);
+  box-shadow:
+    0 30px 70px -24px rgb(0 0 0 / 0.75),
+    0 0 60px -12px rgb(126 232 242 / 0.45);
+  transform-style: preserve-3d;
+}
+
+.tc-gloss {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgb(255 255 255 / 0.16) 0%, transparent 32%, transparent 70%, rgb(126 232 242 / 0.08));
+  pointer-events: none;
+}
+
+.tc-combo {
+  box-shadow: 0 0 18px rgb(255 138 31 / 0.6);
+}
+
+.tc-powerup {
+  z-index: 2;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  background: linear-gradient(145deg, rgb(64 52 120 / 0.95), rgb(33 27 61 / 0.95));
+  box-shadow: 0 12px 26px -8px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.18);
+}
+
+.tc-hero-img {
+  filter: drop-shadow(0 28px 30px rgb(0 0 0 / 0.5)) drop-shadow(0 0 40px rgb(183 164 245 / 0.25));
+}
+
+/* Icy lavender platform the eagle stands on. */
+.tc-platform {
+  border: 2px solid #4a3f86;
+  border-radius: 999px 999px 14px 14px;
+  background: linear-gradient(180deg, #e8f7ff 0 22%, #c4b3f7 22% 100%);
+  box-shadow: 0 18px 30px -10px rgb(0 0 0 / 0.6), 0 0 34px rgb(183 164 245 / 0.35);
+}
+
+.tc-dust {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  width: 70%;
+  height: 22px;
+  margin-left: -35%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(255 255 255 / 0.55), transparent);
+  opacity: 0;
+}
+
+.tc-bulb {
+  filter: drop-shadow(0 0 4px currentColor);
+  animation: tc-twinkle 2.6s ease-in-out infinite;
+}
+
+.tc-ember {
+  position: absolute;
+  bottom: -10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffb35c;
+  box-shadow: 0 0 10px #ff8a1f;
+  opacity: 0;
+  animation: tc-rise 8s linear infinite;
+}
+
+.tc-cta {
+  box-shadow: 0 10px 30px -8px rgb(255 138 31 / 0.65);
+}
+
+.tc-feature {
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.tc-feature:hover {
+  border-color: rgb(126 232 242 / 0.35);
+  background-color: rgb(255 255 255 / 0.08);
+}
+
+@keyframes tc-twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes tc-rise {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) scale(1); }
+  15% { opacity: 0.85; }
+  100% { opacity: 0; transform: translate3d(-18px, -560px, 0) scale(0.3); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tc-bulb,
+  .tc-ember { animation: none; }
+  .tc-ember { display: none; }
+}
+
 /* ── Blog article typography ─────────────────────────────────────────────────── */
 .prose-blog {
   color: #262626;

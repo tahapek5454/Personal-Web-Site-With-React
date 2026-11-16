@@ -6,7 +6,7 @@ import { paths } from '@/lib/i18n'
 import { breadcrumbNode, graph, projectNode } from '@/lib/schema'
 import { Card, CardContent } from './Card'
 import JsonLd from './JsonLd'
-import { GithubIcon } from './icons'
+import { DownloadIcon, GithubIcon } from './icons'
 
 export default function ProjectDetail({ lang, project }: { lang: Locale; project: Project }) {
     const dict = getDict(lang)
@@ -43,7 +43,10 @@ export default function ProjectDetail({ lang, project }: { lang: Locale; project
                     <p className="text-lg text-gray-600 mb-8">{text.description}</p>
 
                     {project.image && (
-                        <div className="relative aspect-[1350/610] mb-8 rounded-2xl overflow-hidden shadow-2xl">
+                        <div
+                            className="relative mb-8 rounded-2xl overflow-hidden shadow-2xl"
+                            style={{ aspectRatio: `${project.image.width} / ${project.image.height}` }}
+                        >
                             <Image
                                 src={project.image.src}
                                 alt={text.title}
@@ -59,6 +62,20 @@ export default function ProjectDetail({ lang, project }: { lang: Locale; project
                         <CardContent>
                             <p className="text-gray-700 text-lg leading-relaxed mb-8">{text.longDescription}</p>
 
+                            {text.features && text.features.length > 0 && (
+                                <>
+                                    <h2 className="text-xl font-bold text-gray-800 mb-3">{t.features}</h2>
+                                    <ul className="grid sm:grid-cols-2 gap-4 mb-8 list-none">
+                                        {text.features.map((feature) => (
+                                            <li key={feature.title} className="rounded-xl border border-gray-200 bg-gray-50 p-4">
+                                                <h3 className="font-semibold text-gray-900 mb-1">{feature.title}</h3>
+                                                <p className="text-sm text-gray-600 leading-relaxed">{feature.description}</p>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </>
+                            )}
+
                             <h2 className="text-xl font-bold text-gray-800 mb-3">{t.technologies}</h2>
                             <ul className="flex flex-wrap gap-2 mb-8 list-none">
                                 {project.technologies.map((tech) => (
@@ -68,16 +85,29 @@ export default function ProjectDetail({ lang, project }: { lang: Locale; project
                                 ))}
                             </ul>
 
-                            <h2 className="text-xl font-bold text-gray-800 mb-3">{t.source}</h2>
-                            <a
-                                href={project.githubUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-900 text-white rounded-full font-semibold hover:shadow-lg transition-shadow duration-300"
-                            >
-                                <GithubIcon className="w-5 h-5 mr-2" />
-                                {t.githubCta}
-                            </a>
+                            <h2 className="text-xl font-bold text-gray-800 mb-3">{project.downloadUrl ? t.download : t.source}</h2>
+                            <div className="flex flex-wrap gap-3">
+                                {project.downloadUrl && (
+                                    <a
+                                        href={project.downloadUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-400 text-gray-950 rounded-full font-semibold hover:shadow-lg transition-shadow duration-300"
+                                    >
+                                        <DownloadIcon className="w-5 h-5 mr-2" />
+                                        {t.downloadCta}
+                                    </a>
+                                )}
+                                <a
+                                    href={project.githubUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-700 to-gray-900 text-white rounded-full font-semibold hover:shadow-lg transition-shadow duration-300"
+                                >
+                                    <GithubIcon className="w-5 h-5 mr-2" />
+                                    {t.githubCta}
+                                </a>
+                            </div>
                         </CardContent>
                     </Card>
                 </article>

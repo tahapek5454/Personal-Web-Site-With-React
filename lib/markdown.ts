@@ -53,6 +53,9 @@ export function projectMarkdown(lang: Locale, project: Project): string {
         '',
         text.longDescription,
         '',
+        ...(text.features?.length
+            ? [`## ${t.features}`, '', list(text.features.map((f) => `**${f.title}**: ${f.description}`)), '']
+            : []),
         `## ${t.technologies}`,
         '',
         list(project.technologies),
@@ -60,6 +63,7 @@ export function projectMarkdown(lang: Locale, project: Project): string {
         `## ${t.source}`,
         '',
         `- [${t.githubCta}](${project.githubUrl})`,
+        ...(project.downloadUrl ? [`- [${t.downloadCta}](${project.downloadUrl})`] : []),
         `- [${t.home}](${absHome(lang)}) · [HTML](${abs(paths.project(lang, project.slug))})`,
         '',
     ].join('\n')
@@ -76,7 +80,7 @@ export function homeMarkdown(lang: Locale): string {
 
     const projectList = projects.map((p) => {
         const text = p.text[lang]
-        return `### [${text.title}](${abs(paths.mdProject(lang, p.slug))})\n\n${text.description}\n\n${text.longDescription}\n\n${dict.projectPage.technologies}: ${p.technologies.join(', ')}\n\nGitHub: ${p.githubUrl}\n`
+        return `### [${text.title}](${abs(paths.mdProject(lang, p.slug))})\n\n${text.description}\n\n${text.longDescription}\n\n${dict.projectPage.technologies}: ${p.technologies.join(', ')}\n\nGitHub: ${p.githubUrl}\n${p.downloadUrl ? `\n${dict.projectPage.download}: ${p.downloadUrl}\n` : ''}`
     })
 
     const recent = getPosts(lang).slice(0, 5)

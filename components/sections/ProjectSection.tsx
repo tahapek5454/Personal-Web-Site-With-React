@@ -1,24 +1,24 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { getDict, type Locale } from '@/content/dictionary'
-import { projects } from '@/content/projects'
+import { getProject, projects } from '@/content/projects'
 import { paths } from '@/lib/i18n'
 import { siteConfig } from '@/config/site'
 import { Card, CardContent, CardHeader } from '../Card'
 import { GithubIcon } from '../icons'
-import ProjectSectionAnimation from './ProjectSectionAnimation'
+import TowerClimbSection from './TowerClimbSection'
 
 const external = { target: '_blank', rel: 'noopener noreferrer' } as const
 
 function ProjectSection({ lang }: { lang: Locale }) {
     const dict = getDict(lang)
     const p = dict.projects
+    const towerClimb = getProject('tower-climb')
     const featuredProject = projects.find((project) => project.featured)
-    const regularProjects = projects.filter((project) => !project.featured)
+    const regularProjects = projects.filter((project) => !project.featured && !project.showcase)
 
     return (
         <section id={dict.ids.projects} aria-labelledby="projects-title" className="min-h-screen bg-background py-20 px-4">
-            <ProjectSectionAnimation />
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-16">
                     <div className="inline-block">
@@ -30,9 +30,15 @@ function ProjectSection({ lang }: { lang: Locale }) {
                     <p className="text-lg text-gray-600 mt-6 max-w-2xl mx-auto">{p.subtitle}</p>
                 </div>
 
+                {towerClimb && <TowerClimbSection lang={lang} project={towerClimb} />}
+
+                <div className="text-center mb-12">
+                    <h3 id="highlights-title" className="text-3xl font-bold text-foreground">{p.highlights}</h3>
+                    <p className="text-gray-600 mt-3 max-w-2xl mx-auto">{p.highlightsText}</p>
+                </div>
+
                 {featuredProject && (
                     <div className="mb-16">
-                        <h3 className="text-2xl font-bold text-foreground mb-8 text-center">{p.featured}</h3>
                         <Card variant="elevated" padding="sm" className="bg-white overflow-hidden">
                             <div className="grid lg:grid-cols-2 h-full">
                                 {featuredProject.image && (
@@ -49,6 +55,9 @@ function ProjectSection({ lang }: { lang: Locale }) {
                                 )}
                                 <div className="p-8 flex flex-col justify-between">
                                     <div>
+                                        <p className="inline-block mb-3 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gray-700 bg-gray-100 rounded-full">
+                                            {p.featured}
+                                        </p>
                                         <h4 className="text-2xl font-bold text-foreground mb-4">
                                             {featuredProject.text[lang].title}
                                         </h4>
@@ -103,9 +112,9 @@ function ProjectSection({ lang }: { lang: Locale }) {
                                                 <GithubIcon className="w-5 h-5 text-gray-600" />
                                             </a>
                                         </div>
-                                        <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-gray-700 transition-colors duration-200">
+                                        <h4 className="text-xl font-bold text-foreground mb-2 group-hover:text-gray-700 transition-colors duration-200">
                                             {text.title}
-                                        </h3>
+                                        </h4>
                                     </CardHeader>
                                     <CardContent>
                                         <p className="text-gray-600 mb-4">{text.description}</p>

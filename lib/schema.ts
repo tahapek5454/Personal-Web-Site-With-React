@@ -77,6 +77,10 @@ export function projectNode(lang: Locale, project: Project) {
         author: { '@id': personId },
         dateModified: isoDateTime(siteConfig.contentUpdatedAt),
         ...(project.image ? { image: abs(project.image.src) } : {}),
+        ...(project.downloadUrl ? { downloadUrl: project.downloadUrl } : {}),
+        ...(project.kind === 'VideoGame'
+            ? { applicationCategory: 'GameApplication', gamePlatform: 'PC', operatingSystem: project.operatingSystem, isAccessibleForFree: true }
+            : {}),
         isPartOf: { '@id': `${absHome(lang)}#profilepage` },
     }
 }

@@ -77,12 +77,26 @@ export interface Dict {
         title: string
         subtitle: string
         featured: string
+        highlights: string
+        highlightsText: string
         viewOnGithub: string
         viewDetails: string
         moreTitle: string
         moreText: string
         visitGithub: string
         githubLabel: (name: string) => string
+    }
+    towerClimb: {
+        eyebrow: string
+        tagline: string
+        platform: string
+        stats: { value: string; label: string }[]
+        download: string
+        source: string
+        details: string
+        heroAlt: string
+        shotAlt: string
+        featuresLabel: string
     }
     projectPage: {
         home: string
@@ -92,6 +106,9 @@ export interface Dict {
         source: string
         otherProjects: string
         githubCta: string
+        features: string
+        download: string
+        downloadCta: string
     }
     footer: {
         quickLinks: string
@@ -255,12 +272,30 @@ export const dictionaries: Record<Locale, Dict> = {
             title: 'Kişisel Projelerim',
             subtitle: 'Geliştirdiğim projeleri keşfedin. Her biri farklı teknolojiler ve yaklaşımlar kullanılarak oluşturulmuştur.',
             featured: 'Öne Çıkan Proje',
+            highlights: 'Dikkat Çekenler',
+            highlightsText: 'Mimari, yapay zekâ ve veri odaklı projelerimden bir seçki.',
             viewOnGithub: 'GitHub’da Görüntüle',
             viewDetails: 'Proje Detayı',
             moreTitle: 'Daha Fazla Proje',
             moreText: 'GitHub profilimde daha fazla proje ve açık kaynak katkılarımı keşfedebilirsiniz.',
             visitGithub: 'GitHub Profilimi Ziyaret Et',
             githubLabel: (name) => `${name} GitHub deposu`,
+        },
+        towerClimb: {
+            eyebrow: 'Oyun Projesi · Godot 4',
+            tagline: 'Hız kazan, zıpla, duvardan sek, kuleyi tırman. Kamera seni bekleyip durmaz.',
+            platform: 'Windows · Ücretsiz · Açık kaynak (MIT)',
+            stats: [
+                { value: '∞', label: 'Sonsuz kule' },
+                { value: '15', label: 'Başarım' },
+                { value: '4', label: 'Güçlendirme' },
+            ],
+            download: 'itch.io’dan İndir',
+            source: 'Kaynak Kod',
+            details: 'Proje Detayı',
+            heroAlt: 'Tower Climb’ın kartal kahramanı oyun görüntüsünü işaret ediyor',
+            shotAlt: 'Tower Climb oyun içi görüntü: kartal roketle kulede yükseliyor',
+            featuresLabel: 'Oyunun öne çıkan özellikleri',
         },
         projectPage: {
             home: 'Ana Sayfa',
@@ -270,6 +305,9 @@ export const dictionaries: Record<Locale, Dict> = {
             source: 'Kaynak Kod',
             otherProjects: 'Diğer Projeler',
             githubCta: 'GitHub’da Görüntüle',
+            features: 'Özellikler',
+            download: 'İndir ve Oyna',
+            downloadCta: 'itch.io’dan İndir',
         },
         footer: {
             quickLinks: 'Hızlı Linkler',
@@ -427,12 +465,30 @@ export const dictionaries: Record<Locale, Dict> = {
             title: 'Personal Projects',
             subtitle: 'Explore the projects I have built. Each one uses different technologies and approaches.',
             featured: 'Featured Project',
+            highlights: 'Highlights',
+            highlightsText: 'A selection of my architecture, AI and data-focused projects.',
             viewOnGithub: 'View on GitHub',
             viewDetails: 'Project Details',
             moreTitle: 'More Projects',
             moreText: 'You can find more projects and my open source contributions on my GitHub profile.',
             visitGithub: 'Visit My GitHub Profile',
             githubLabel: (name) => `${name} GitHub repository`,
+        },
+        towerClimb: {
+            eyebrow: 'Game Project · Godot 4',
+            tagline: 'Build speed, jump, bounce off walls and climb the tower. The camera won’t wait for you.',
+            platform: 'Windows · Free · Open source (MIT)',
+            stats: [
+                { value: '∞', label: 'Endless tower' },
+                { value: '15', label: 'Achievements' },
+                { value: '4', label: 'Power-ups' },
+            ],
+            download: 'Download on itch.io',
+            source: 'Source Code',
+            details: 'Project Details',
+            heroAlt: 'The Tower Climb eagle hero pointing at the gameplay screenshot',
+            shotAlt: 'Tower Climb gameplay: the eagle flies up the tower with a rocket',
+            featuresLabel: 'Game highlights',
         },
         projectPage: {
             home: 'Home',
@@ -442,6 +498,9 @@ export const dictionaries: Record<Locale, Dict> = {
             source: 'Source Code',
             otherProjects: 'Other Projects',
             githubCta: 'View on GitHub',
+            features: 'Features',
+            download: 'Download and Play',
+            downloadCta: 'Download on itch.io',
         },
         footer: {
             quickLinks: 'Quick Links',
