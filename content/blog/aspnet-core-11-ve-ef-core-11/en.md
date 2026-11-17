@@ -4,7 +4,7 @@ description: "Async validation, union support, OpenAPI 3.2, and SignalR authenti
 date: 2026-11-15
 topic: dotnet
 tags: [aspnetcore, blazor, minimal-api, signalr, efcore, dotnet-11]
-draft: true
+draft: false
 ---
 
 In the web and data layer, the character of .NET 11 is **not "a big new framework" but "filling in the missing pieces"**. Validation became async, OpenAPI moved to the latest specification, SignalR learned to refresh tokens, and EF Core started generating cleaner SQL behind the scenes.

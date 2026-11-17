@@ -4,7 +4,7 @@ description: "ASP.NET Core 11'de asenkron doğrulama, union desteği, OpenAPI 3.
 date: 2026-11-15
 topic: dotnet
 tags: [aspnetcore, blazor, minimal-api, signalr, efcore, dotnet-11]
-draft: true
+draft: false
 ---
 
 Web ve veri katmanında .NET 11'in karakteri **"büyük yeni bir çerçeve" değil, "eksik parçaların tamamlanması"**. Doğrulama asenkron oldu, OpenAPI güncel spesifikasyona geçti, SignalR token yenilemeyi öğrendi ve EF Core arka planda daha temiz SQL üretmeye başladı.

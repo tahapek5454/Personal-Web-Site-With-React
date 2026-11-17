@@ -4,7 +4,7 @@ description: ".NET 11'de Runtime Async nedir, yeni Process API'leri ve LINQ Full
 date: 2026-11-14
 topic: dotnet
 tags: [dotnet, dotnet-11, runtime, linq, system-text-json, sdk]
-draft: true
+draft: false
 ---
 
 Bir .NET sürümünün etkisi çoğu zaman yeni dil özelliklerinden çok, **altta çalışan runtime ve her gün kullandığımız kütüphanelerde** hissedilir. .NET 11'de de durum böyle: bazı kazançlar hiç kod değiştirmeden geliyor, bazıları ise yıllardır elle çözdüğümüz problemlere hazır çözüm sunuyor.

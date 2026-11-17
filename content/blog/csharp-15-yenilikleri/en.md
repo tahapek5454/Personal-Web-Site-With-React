@@ -4,7 +4,7 @@ description: "What are the union types, closed hierarchies, collection expressio
 date: 2026-11-13
 topic: dotnet
 tags: [csharp, csharp-15, dotnet-11, union-types, pattern-matching]
-draft: true
+draft: false
 ---
 
 The main theme of C# 15 fits in one sentence: **express the allowed set of types explicitly in the type system, and let the compiler catch the missing case.** The long-awaited union types and the `closed` hierarchies that complement them sit at the center of this idea. On top of that, a few small but effective features simplify everyday code.

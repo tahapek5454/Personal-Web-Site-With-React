@@ -4,7 +4,7 @@ description: ".NET 11 ile neler geldi, destek süresi ne kadar, hangi gereksinim
 date: 2026-11-12
 topic: dotnet
 tags: [dotnet, dotnet-11, csharp-15, upgrade]
-draft: true
+draft: false
 ---
 
 .NET 11, 10 Kasım 2026'da .NET Conf 2026 ile birlikte yayınlandı. Bu sürüm tek bir büyük özellikten çok, **dil, runtime, kütüphaneler ve web katmanında birbirini tamamlayan iyileştirmeler** getiriyor. Yükseltme kararını vermeden önce sürümün kimliğini, gereksinimlerini ve kırıcı değişikliklerini bilmek gerekiyor.

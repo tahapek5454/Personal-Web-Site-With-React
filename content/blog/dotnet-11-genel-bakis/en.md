@@ -4,7 +4,7 @@ description: "What's new in .NET 11, how long is it supported, which requirement
 date: 2026-11-12
 topic: dotnet
 tags: [dotnet, dotnet-11, csharp-15, upgrade]
-draft: true
+draft: false
 ---
 
 .NET 11 was released on November 10, 2026, alongside .NET Conf 2026. Rather than a single headline feature, this release brings **complementary improvements across the language, runtime, libraries, and web stack**. Before deciding to upgrade, it's worth knowing the release's support model, its requirements, and its breaking changes.

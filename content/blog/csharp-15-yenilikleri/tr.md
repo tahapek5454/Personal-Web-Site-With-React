@@ -4,7 +4,7 @@ description: "C# 15 ile gelen union tipleri, kapalı hiyerarşiler, koleksiyon i
 date: 2026-11-13
 topic: dotnet
 tags: [csharp, csharp-15, dotnet-11, union-types, pattern-matching]
-draft: true
+draft: false
 ---
 
 C# 15'in ana teması tek cümleyle özetlenebilir: **izin verilen tip kümesini tip sisteminde açıkça ifade et, eksik durumu derleyici yakalasın.** Yıllardır beklenen union tipleri ve onu tamamlayan `closed` hiyerarşiler bu fikrin merkezinde. Bunlara ek olarak günlük kodu sadeleştiren birkaç küçük ama etkili özellik daha geliyor.

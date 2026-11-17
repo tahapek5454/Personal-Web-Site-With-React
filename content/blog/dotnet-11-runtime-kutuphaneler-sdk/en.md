@@ -4,7 +4,7 @@ description: "What is Runtime Async in .NET 11, what do the new Process APIs and
 date: 2026-11-14
 topic: dotnet
 tags: [dotnet, dotnet-11, runtime, linq, system-text-json, sdk]
-draft: true
+draft: false
 ---
 
 The impact of a .NET release is often felt less in new language features and more in **the runtime underneath and the libraries we use every day**. .NET 11 is no different: some gains arrive without changing a single line of code, while others offer ready-made solutions to problems we've been solving by hand for years.
