@@ -64,6 +64,8 @@ export function pageMetadata({ lang, title, absoluteTitle, description, alternat
     return {
         title: absoluteTitle ? { absolute: title } : title,
         description,
+        // Posts describe their own subject; the site-wide profile keywords stay on the other pages.
+        ...(article ? { keywords: article.tags } : {}),
         alternates: {
             canonical: abs(self),
             languages,

@@ -47,9 +47,9 @@ function HeaderSection({ lang }: { lang: Locale }) {
                     </div>
                     <div className="flex-1 space-y-6 text-center bigLg:text-left">
                         <div className="space-y-4">
-                            <h2 className="text-4xl bigLg:text-5xl font-bold text-foreground leading-tight">
+                            <h1 className="text-4xl bigLg:text-5xl font-bold text-foreground leading-tight">
                                 {h.greeting}
-                            </h2>
+                            </h1>
                             <p className="block font-bold text-3xl bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-transparent">
                                 {h.role}
                             </p>

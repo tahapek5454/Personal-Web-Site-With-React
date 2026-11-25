@@ -7,6 +7,7 @@ export const siteConfig = {
     github: 'https://github.com/tahapek5454',
     linkedin: 'https://www.linkedin.com/in/taha-pek-413b1b221/',
     instagram: 'https://www.instagram.com/tahapek',
+    itch: 'https://tahapek5454.itch.io/',
   },
   cvUrl: 'https://drive.google.com/file/d/1U53fwn20Z8e2nmEErx6jyiX_TJ8FScJK/view?usp=sharing',
   // Bump manually when page content changes; drives sitemap lastmod and schema dateModified.

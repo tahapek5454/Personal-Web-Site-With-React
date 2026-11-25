@@ -31,7 +31,7 @@ export function personNode(lang: Locale) {
         url: absHome('tr'),
         image: abs('/images/image1.jpeg'),
         email: siteConfig.email,
-        sameAs: [siteConfig.social.github, siteConfig.social.linkedin, siteConfig.social.instagram],
+        sameAs: Object.values(siteConfig.social),
         knowsLanguage: ['tr', 'en'],
         knowsAbout: [
             'Software Development', 'Full Stack Development', '.NET', 'C#', 'JavaScript', 'TypeScript', 'React',
