@@ -1,7 +1,8 @@
 ---
-title: ".NET 11 Is Here: Overview and Upgrade Guide"
-description: "What's new in .NET 11, how long is it supported, which requirements changed, and how do you upgrade a project? This article answers these questions."
+title: ".NET 11 Release Date, LTS or STS? Overview and Upgrade Guide"
+description: ".NET 11 shipped on November 10, 2026 as an STS (not LTS) release supported until November 2028. What's new, requirements, breaking changes and how to upgrade."
 date: 2026-11-12
+updated: 2026-11-25
 topic: dotnet
 tags: [dotnet, dotnet-11, csharp-15, upgrade]
 draft: false
@@ -12,6 +13,17 @@ draft: false
 This article is the first stop in the .NET 11 and C# 15 series. Here we draw the big picture of the release and talk about how to move a project to .NET 11.
 
 > **Scope of this series:** The series has four parts: overview and upgrade (this article), [C# 15 features](/en/blog/csharp-15-yenilikleri), [runtime, libraries, and SDK](/en/blog/dotnet-11-runtime-kutuphaneler-sdk), and [ASP.NET Core 11 and EF Core 11](/en/blog/aspnet-core-11-ve-ef-core-11). Think of this article as the series' **map**; the details come in the following articles.
+
+## .NET 11 at a glance
+
+| Question | Answer |
+|---|---|
+| Release date | November 10, 2026 (.NET Conf 2026) |
+| LTS or STS? | STS (Standard Term Support), not LTS |
+| End of support | November 2028 (two years) |
+| Default C# version | C# 15 for `net11.0` projects |
+| Minimum CPU (x86/x64) | x86-64-v2 (SSE4.2, POPCNT) |
+| Next LTS | .NET 12 |
 
 ## Release identity: STS
 

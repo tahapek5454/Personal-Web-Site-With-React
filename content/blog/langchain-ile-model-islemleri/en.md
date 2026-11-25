@@ -1,6 +1,6 @@
 ---
-title: "Working with Models in LangChain"
-description: "How do you create a model instance with LangChain? What do its parameters do, and which methods should you use? This article answers these questions."
+title: "LangChain Chat Models: ChatOpenAI, init_chat_model and Parameters"
+description: "How to create a chat model in LangChain with ChatOpenAI or init_chat_model, what parameters like temperature and max_tokens do, and how to call invoke()."
 date: 2026-11-03
 topic: ai
 tags: [langchain, agents, python, ai]

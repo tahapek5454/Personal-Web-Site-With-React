@@ -1,6 +1,6 @@
 ---
-title: "What's New in ASP.NET Core 11 and EF Core 11"
-description: "Async validation, union support, OpenAPI 3.2, and SignalR authentication refresh in ASP.NET Core 11; better SQL and breaking changes in EF Core 11. This article answers these questions."
+title: "ASP.NET Core 11 and EF Core 11: What's New and Breaking Changes"
+description: "ASP.NET Core 11 adds async validation, union support, OpenAPI 3.2 and SignalR token refresh; EF Core 11 brings cleaner SQL. New features and breaking changes."
 date: 2026-11-15
 topic: dotnet
 tags: [aspnetcore, blazor, minimal-api, signalr, efcore, dotnet-11]

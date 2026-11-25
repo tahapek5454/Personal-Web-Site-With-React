@@ -1,7 +1,8 @@
 ---
-title: ".NET 11 Çıktı: Genel Bakış ve Yükseltme Rehberi"
-description: ".NET 11 ile neler geldi, destek süresi ne kadar, hangi gereksinimler değişti ve projeyi nasıl yükseltiriz? Sorularına cevap arıyoruz."
+title: ".NET 11 Çıkış Tarihi, LTS mi? Genel Bakış ve Yükseltme Rehberi"
+description: ".NET 11, 10 Kasım 2026'da STS (LTS değil) sürüm olarak çıktı ve Kasım 2028'e kadar destekleniyor. Yenilikler, gereksinimler, kırıcı değişiklikler ve yükseltme adımları."
 date: 2026-11-12
+updated: 2026-11-25
 topic: dotnet
 tags: [dotnet, dotnet-11, csharp-15, upgrade]
 draft: false
@@ -12,6 +13,17 @@ draft: false
 Bu yazı, .NET 11 ve C# 15 serisinin ilk durağı. Burada sürümün genel resmini çiziyor ve bir projeyi .NET 11'e nasıl taşıyacağımızı konuşuyoruz.
 
 > **Bu serinin kapsamı:** Seri dört yazıdan oluşuyor: genel bakış ve yükseltme (bu yazı), [C# 15 yenilikleri](/blog/csharp-15-yenilikleri), [runtime, kütüphaneler ve SDK](/blog/dotnet-11-runtime-kutuphaneler-sdk) ve [ASP.NET Core 11 ile EF Core 11](/blog/aspnet-core-11-ve-ef-core-11). Bu yazıyı serinin **haritası** olarak düşünebilirsiniz; detaylar sonraki yazılarda.
+
+## Bir bakışta .NET 11
+
+| Soru | Cevap |
+|---|---|
+| Çıkış tarihi | 10 Kasım 2026 (.NET Conf 2026) |
+| LTS mi, STS mi? | STS (Standard Term Support), LTS değil |
+| Destek sonu | Kasım 2028 (iki yıl) |
+| Varsayılan C# sürümü | `net11.0` projelerinde C# 15 |
+| Minimum CPU (x86/x64) | x86-64-v2 (SSE4.2, POPCNT) |
+| Sonraki LTS | .NET 12 |
 
 ## Sürümün kimliği: STS
 

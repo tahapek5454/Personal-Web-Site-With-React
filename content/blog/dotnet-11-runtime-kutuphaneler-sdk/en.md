@@ -1,6 +1,6 @@
 ---
-title: ".NET 11: What's New in the Runtime, Libraries, and SDK"
-description: "What is Runtime Async in .NET 11, what do the new Process APIs and LINQ FullJoin bring, and what changed in System.Text.Json and the SDK? This article answers these questions."
+title: ".NET 11 Runtime and SDK: Runtime Async, LINQ FullJoin, New APIs"
+description: "What changed under the hood in .NET 11: Runtime Async (preview), one-line Process APIs, LINQ FullJoin, Zstandard, System.Text.Json and SDK updates, with code."
 date: 2026-11-14
 topic: dotnet
 tags: [dotnet, dotnet-11, runtime, linq, system-text-json, sdk]

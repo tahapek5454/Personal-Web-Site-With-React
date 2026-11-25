@@ -1,6 +1,6 @@
 ---
-title: "What's New in C# 15: Union Types, closed, and More"
-description: "What are the union types, closed hierarchies, collection expression arguments, extension indexers, and labeled break/continue in C# 15, and when should you use them? This article answers these questions."
+title: "C# 15 Features: Union Types, closed Hierarchies and More"
+description: "C# 15 ships with .NET 11. Union types, closed hierarchies, collection expression arguments, extension indexers and labeled break/continue explained with examples."
 date: 2026-11-13
 topic: dotnet
 tags: [csharp, csharp-15, dotnet-11, union-types, pattern-matching]

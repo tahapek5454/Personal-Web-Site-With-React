@@ -1,6 +1,6 @@
 ---
-title: "Defining Tools in LangChain: Connecting Agents to the World"
-description: "What is a tool in LangChain, how do we define one with @tool, and how do schemas, return values, error handling and dynamic tool selection work? This article answers these questions."
+title: "LangChain Tools Tutorial: Define Tools with @tool for Agents"
+description: "How to define LangChain tools with @tool: Pydantic schemas, ToolRuntime, return values, error handling, dynamic tool selection and MCP, with Python examples."
 date: 2026-11-22
 topic: ai
 tags: [langchain, agents, tools, python]

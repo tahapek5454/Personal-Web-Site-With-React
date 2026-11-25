@@ -1,6 +1,6 @@
 ---
-title: "Building Agents with LangChain: Beyond the Model"
-description: "What is a LangChain agent, why isn't a single model enough, and how do you build a basic agent with create_agent? This article answers these questions."
+title: "LangChain Agents Tutorial: Build an Agent with create_agent"
+description: "What a LangChain agent is, how the agent loop works and how to build one with create_agent: tools, structured output, memory and middleware, with Python examples."
 date: 2026-11-08
 topic: ai
 tags: [langchain, agents, python, ai]

@@ -79,7 +79,13 @@ draft: true              # gözden geçirilene kadar true
 ---
 ```
 
-- `description` genellikle "Sorularına cevap arıyoruz." ile biter (İngilizcede "This article answers these questions.").
+- `description` Türkçede "Sorularına cevap arıyoruz." ile bitebilir; 160 karakteri geçecekse bu kalıbı at.
+- **Arama için başlık ve açıklama (2026-11-25, Search Console verisine göre):**
+  - `title` insanların aradığı ifadeyle başlar ve en fazla ~60 karakterdir. Şiirsel alt başlık yerine aranan terimi kullan: "LangChain Agents Tutorial: Build an Agent with create_agent" iyi, "Building Agents with LangChain: Beyond the Model" zayıf.
+  - İngilizce `description` soru sıralamaz, **cevabı verir** ve en fazla ~160 karakterdir; "This article answers these questions." kullanılmaz. Örnek: ".NET 11 shipped on November 10, 2026 as an STS (not LTS) release..."
+  - API, sürüm ve araç adlarını (`create_agent`, `@tool`, `C# 15`) başlıkta ve açıklamada açıkça geçir.
+  - Sürüm ya da duyuru yazılarında girişten hemen sonra "Bir bakışta" tablosu koy (çıkış tarihi, destek süresi, gereksinimler). Google ve AI aramaları kısa cevabı buradan alır.
+  - Yayınlanmış bir yazının slug'ı değiştirilmez; içerik ciddi biçimde güncellenirse `updated` alanı eklenir.
 - Seri yazılarda tarihleri sıralı ver ki listede doğru sırada görünsün.
 
 ### 6. Dosya ve dil kuralları
